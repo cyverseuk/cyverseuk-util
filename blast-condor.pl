@@ -1,3 +1,5 @@
+#TODO separate output files, right now the single one is overwrtten
+
 use warnings;
 use strict;
 
@@ -79,17 +81,27 @@ my $cc = 0;
 sub gen_submit() {
   open SF, ">blast.htc" or die $!;
 
+  print SF "Input = $qf.job\$(Process)\n";
   print SF "Executable = $blastcmd\n";
-  print SF "Log = $qf.blast.log\n";
   print SF "Output = $qf.blast.out\n";
-  print SF "Arguments = -query $qf.job\$(Process) -db $db ".$blastargs."\n";
+  print SF "Log = $qf.blast.log\n";
+  print SF "Error = $qf.blast.error\n";
+  print SF "Arguments = \"-query - -db $db ".$blastargs."\"\n";
 
   if (!$notransfer) {
     print SF "should_transfer_files = YES\n";
     print SF "when_to_transfer_output = ON_EXIT\n";
+
+    # get db files, thanks for splitting those BLAST :(
+    if (-f "$db.nhr") {
+      print SF "transfer_input_files = $db.nhr, $db.nsq, $db.nin\n";
+    } else {
+      print SF "transfer_input_files = $db.phr, $db.psq, $db.pin\n";
+    }
   }
 
-  print SF "Queue $jobi";
+  my $files = $jobi + 1;
+  print SF "Queue ".$files."\n";
 
   close SF;
 }
@@ -125,6 +137,7 @@ process_record("");
 
 gen_submit();
 
-print STDERR "Split query file into $jobi files.\n";
+my $files = $jobi + 1;
+print STDERR "Split query file into $files files.\n";
 print STDERR "Run \"condor_submit blast.htc\" to run your BLAST. ";
 print STDERR "Thank you for using blast-condor, have a great day.\n";
