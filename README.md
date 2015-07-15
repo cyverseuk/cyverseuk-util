@@ -1,10 +1,10 @@
 # blast-condor
 A perl script to split a BLAST search into multiple jobs
 
-#SYNOPSIS
+#Synopsis
        blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-n num_jobs]
 
-#DESCRIPTION
+#Description
        --blastcommand, -b  Full path to the blast program to run (blastn, blastx, etc.)
 
        --query, -q         FASTA file with query sequences
@@ -17,8 +17,8 @@ A perl script to split a BLAST search into multiple jobs
 
        --arguments, -a     Additional blast command line parameters
 
-       --man, -m      Show this help
+       --man, -m	   Show this help
 
-#AUTHOR
+#Author
        Erik van den Bergh
 
