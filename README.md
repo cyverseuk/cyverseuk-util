@@ -17,7 +17,7 @@ A perl script to split a BLAST search into multiple jobs
 
        --arguments, -a     Additional blast command line parameters
 
-       --man, -m	   Show this help
+       --man, -m           Show this help
 
 #Author
        Erik van den Bergh
