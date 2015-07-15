@@ -6,7 +6,7 @@ use Getopt::Long;
 
 =head1 SYNOPSIS
 
-blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-n num_jobs]
+blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-j jobs]
 
 =head1 DESCRIPTION
 
@@ -16,7 +16,7 @@ blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-n num_jobs]
 
 --database, -d		BLAST database file
 
---num-jobs, -n		Number of jobs to generate
+--jobs, -j		Number of jobs to generate
 
 --transfer-off, -t	Don't use Condor's file transfer mechanism
 
@@ -47,7 +47,7 @@ my $blastargs = "";
 GetOptions("blastcommand=s" => \$blastcmd,
 	   "query=s"	    => \$qf,
 	   "database=s"	    => \$db,
-	   "num-jobs=i"	    => \$jobs,
+	   "jobs=i"	    => \$jobs,
            "transfer-off"   => \$notransfer,
            "arguments=s"    => \$blastargs,
 	   "man"	    => \$man,
@@ -124,3 +124,7 @@ while (<QF>) {
 process_record("");
 
 gen_submit();
+
+print STDERR "Split query file into $jobi files.\n";
+print STDERR "Run \"condor_submit blast.htc\" to run your BLAST. ";
+print STDERR "Thank you for using blast-condor, have a great day.\n";
