@@ -1,5 +1,5 @@
 # blast-condor
-A perl script to split a BLAST search into multiple jobs
+A perl script to split a BLAST search into multiple jobs for HTCondor
 
 #Synopsis
        blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-j jobs]
