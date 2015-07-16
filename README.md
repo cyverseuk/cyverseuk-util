@@ -1,24 +1,6 @@
-# blast-condor
-A perl script to split a BLAST search into multiple jobs for HTCondor
+#condor-iplant-util
 
-#Synopsis
-       blast-condor.pl -b blastcmd -q in.fa -d db.blastdb [-j jobs]
+A collection of utility scripts for the iplant cluster at TGAC
 
-#Description
-       --blastcommand, -b  Full path to the blast program to run (blastn, blastx, etc.)
-
-       --query, -q         FASTA file with query sequences
-
-       --database, -d      BLAST database file
-
-       --jobs, -j          Number of jobs to generate
-
-       --transfer-off, -t  Don't use Condor's file transfer mechanism
-
-       --arguments, -a     Additional blast command line parameters
-
-       --man, -m           Show this help
-
-#Author
-       Erik van den Bergh
-
+[blast-condor.pl](blast-condor.md): split up BLAST queries for running on condor
+[condor-summ.pl](condor-summ.md): provide load summary of all systems in the pool
