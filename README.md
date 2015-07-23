@@ -1,4 +1,4 @@
-#condor-iplant-util
+#iplantuk-util
 
 A collection of utility scripts for the iplant cluster at TGAC
 
