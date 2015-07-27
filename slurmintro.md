@@ -40,11 +40,9 @@ To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure 
 
 ####Essential options:
 
-ControlMachine=*hostname* - Hostname of master controller *NB on the master itself, this should be the basic hostname as returned by hostname -s*
-
-NodeName=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
-
-PartitionName=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
+- **ControlMachine**=*hostname* - Hostname of master controller *NB on the master itself, this should be the basic hostname as returned by hostname -s*
+- **NodeName**=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
+- **PartitionName**=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
 
 These three options in the file are the ONLY thing that you need to get slurm up and running:
 
