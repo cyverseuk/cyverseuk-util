@@ -22,6 +22,7 @@ TODO
   - `-D` run in foreground (dont daemonize)
   - `-c` clear queue, jobs and state ("clean slate")
   - `-v` verbose, each -v increases verbosity
+
 ### slurmd
 - Run on every compute node
 - First run: try `slurmd -Dcvvvv`
