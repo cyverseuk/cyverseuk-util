@@ -1,11 +1,13 @@
 #SLURM job manager
-##basic stuff
+##Basic stuff
 
-slurm starting with https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
+Slurm starting with: https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
 
-###documentation:
+###Documentation:
 User quick start: http://slurm.schedmd.com/quickstart.html
+
 Admin quick start: http://slurm.schedmd.com/quickstart_admin.html
+
 man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 ###Installing
@@ -31,12 +33,12 @@ TODO
 
 To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure all daemons on all nodes.
 
-####location of slurm.conf
+####Location of slurm.conf
 - If you compiled and installed slurm, location of slurm.conf defaults to ???, but can be given in the configure step, e.g `./configure --sysconfdir=/path/to/dir`
 - On Ubuntu/Debian systems: TBA
 - Redhat/CentOS: TBA
 
-####essential options:
+####Essential options:
 
 ControlMachine=*hostname* - Hostname of master controller *NB on the master itself, this should be the basic hostname as returned by hostname -s*
 NodeName=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
