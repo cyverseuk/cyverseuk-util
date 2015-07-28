@@ -1,4 +1,12 @@
 #SLURM job manager
+
+##Contents
+- [Basic stuff](#basic-stuff)
+  - [Documentation](#documentation)
+  - [Installing](#installing)
+- [Basic commands](#basic-commands)
+- [slurm.conf](slurmconf)
+- [Troubleshooting](troubleshooting)
 ##Basic stuff
 
 Slurm tutorial vids (playlist): https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
@@ -17,9 +25,9 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
   - unzip/tar and `./configure && make install` *NB. you might need libssl-dev as a dependency*
   - create keyfile `dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key` *Copy the key to all nodes*
   - run the munged daemon `munged`
-2. Install slurm
+2. Install slurm on all nodes
   - Get tarball from http://www.schedmd.com/#repos
-  - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB. you will need to have automake installed*
+  - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB. You will need automake*
 3. Create slurm.conf file
   - The most barebones slurm.conf would look like this:
 
@@ -31,14 +39,14 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
     ```
   - These three options in the file are the ONLY thing that you need to get slurm up and running.
   - See [slurm.conf](#slurmconf) below for more options
-4. Copy slurm.conf to the other machines in your network.
+4. Copy slurm.conf to the other nodes in your network.
 5. Start slurm daemons:
   1. On master: `slurmctld -f /path/to/slurm.conf -Dcvvvv`
   2. On all nodes (including master if you want it to do work): `slurmd -f /path/to/slurm.conf -Dcvvvv`
     - This will run every daemon in the foreground, omit the -D to run in background (see below for full details)
 6. Try `sinfo` or `squeue` to see your cluster up and running!
 
-### Basic commands:
+## Basic commands:
 ### slurmctld
 - Run on master only
 - First run: try `slurmctld -Dcvvvv`
@@ -57,7 +65,13 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 - Other options:
   - `-L logfile` write messages to this file, using verboseness given by `-v` *Also see SlurmdLogFile option below*
 
-###slurm.conf
+### sinfo
+
+### squeue
+
+Lists the current job queue
+
+##slurm.conf
 
 To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure all daemons on all nodes.
 
@@ -96,7 +110,7 @@ To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure 
 
 http://slurm.schedmd.com/slurm.conf.html
 
-###Troubleshooting
+##Troubleshooting
 
 If your jobs are hanging in a completing state ('CG' in squeue), run:
 
