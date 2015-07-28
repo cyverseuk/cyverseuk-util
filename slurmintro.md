@@ -29,7 +29,9 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
     ```
     # /etc/slurm/slurm.conf
     ControlMachine=hostname #Hostname of master controller. On the master itself, this should be the basic hostname as returned by hostname -s
-    NodeName=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
+
+    NodeName=list,of,hosts,supports,brackets[0-99] State=UNKOWN
+
     PartitionName=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
     ```
   - These three options in the file are the ONLY thing that you need to get slurm up and running.
