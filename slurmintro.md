@@ -1,7 +1,7 @@
 #SLURM job manager
 ##Basic stuff
 
-Slurm starting with: https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
+Slurm tutorial vids (playlist): https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
 
 ###Documentation:
 User quick start: http://slurm.schedmd.com/quickstart.html
@@ -14,12 +14,12 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 1. Install MUNGE on all nodes
   - Get tarball from https://github.com/dun/munge
-  - unzip/tar and `./configure && make install` *NB you might need libssl-dev as a dependency*
+  - unzip/tar and `./configure && make install` *NB. you might need libssl-dev as a dependency*
   - create keyfile `dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key` *Copy the key to all nodes*
   - run the munged daemon `munged`
 2. Install slurm
   - Get tarball from http://www.schedmd.com/#repos
-  - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB you will need to have automake installed*
+  - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB. you will need to have automake installed*
   - Create a slurm.conf file (see below for values) and put it in /etc/slurm
   - (On master) run slurmctld
   - (On all nodes) run slurmd
@@ -62,4 +62,25 @@ These three options in the file are the ONLY thing that you need to get slurm up
 
 Additional options that can be handy:
 
+**Epilog**=/path/to/script - script that is executed after every job
+**RebootProgram**=reboot_prg - command that should be executed to reboot a node through the "scontrol reboot_nodes" command
+**SlurmUser**=*user* - user that slurmctld runs as, defaults to root but should be slurm or something similar
+**SlurmdUser**=*user* - user that slurmd runs as, defaults to root but should be slurm or something similar
+**SlurmctldDebug**=*level* - verboseness of slurmctld logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmctld -L` or the SlurmctldLogFile option (see below)
+**SlurmctldLogFile**=/path/to/file - the location of the log for the slurmctld
+**SlurmdDebug**=*level* - verboseness of slurmd logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmctld -L` or the SlurmctldLogFile option (see below)
+**SlurmdLogFile**=/path/to/file - the location of the log for the slurmd
+
+
+
 Full list of options can be found here:
+
+http://slurm.schedmd.com/slurm.conf.html
+
+###Troubleshooting
+
+If your jobs are hanging in a completing state ('CG' in squeue), run:
+
+`scontrol update NodeName=<node> State=down Reason=hung_proc && scontrol update NodeName=<node> State=resume`
+
+This resets all jobs, so be careful. For details see here: http://slurm.schedmd.com/troubleshoot.html#completing
