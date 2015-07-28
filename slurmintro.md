@@ -33,7 +33,7 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
     PartitionName=partition Nodes=list,of,hosts Default=YES MaxTime=INFINITE State=UP
     ```
   - These three options in the file are the ONLY thing that you need to get slurm up and running.
-  - See slurm.conf below for more options
+  - See [slurm.conf](#slurmconf) below for more options
 4. Copy slurm.conf to the other machines in your network.
 5. Start slurm daemons:
   1. On master: `slurmctld -f /path/to/slurm.conf -Dcvvvv`
