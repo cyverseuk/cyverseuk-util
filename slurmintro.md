@@ -23,7 +23,20 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
   - Create a slurm.conf file (see below for values) and put it in /etc/slurm
   - (On master) run slurmctld
   - (On all nodes) run slurmd
+3. Create slurm.conf file
+```
+ControlMachine=hostname - Hostname of master controller. On the master itself, this should be the basic hostname as returned by hostname -s
+NodeName=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
+PartitionName=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
+```
+These three options in the file are the ONLY thing that you need to get slurm up and running.
+Copy slurm.conf to the other machines in your network.
+4. Start slurm daemons:
+  1. On master: `slurmctld -f /path/to/slurm.conf -Dcvvvv`
+  2. On all nodes (including master if you want it to do work): `slurmd -f /path/to/slurm.conf -Dcvvvv`
 
+This will run every daemon in the foreground, omit the -D to run in background (see below for full details)
+5. Try `sinfo` or `squeue` to see your cluster up and running!
 ### Basic commands:
 ### slurmctld
 - Run on master only
@@ -58,11 +71,6 @@ To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure 
 - **NodeName**=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
 - **PartitionName**=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
 
-These three options in the file are the ONLY thing that you need to get slurm up and running:
-
-1. Copy slurm.conf to the other machines in your network
-2. Start slurmctld on your master
-3. Start the slurmd on all nodes (including master if you want it to perform work)
 
 #####Additional options that can be handy:
 
