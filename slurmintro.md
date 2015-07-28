@@ -10,7 +10,7 @@
 
 ##Basic stuff
 
-Slurm tutorial vids (playlist): https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
+Slurm tutorial vids (playlist): [youtube](https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-)
 
 ###Documentation:
 User quick start: http://slurm.schedmd.com/quickstart.html
