@@ -68,10 +68,25 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 ### sinfo
 
+Shows the status of nodes in the cluster
+
 ### squeue
 
 Lists the current job queue
 
+### srun
+
+The main command to run things in slurm. Important arguments:
+- `-n<x>` request this task to be run x amount of times
+- `--multi-prog` run with different arguments each task as specified in configuration file:
+  - .conf looks like this:
+  ```
+  #myjob.conf
+  0,2-3 coolprog --arg file_default
+  # %t is replaced by the task number
+  1,3-6 coolprog --arg file%t
+  ```
+- `-l` print task number to STDOUT
 ##slurm.conf
 
 To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure all daemons on all nodes.
