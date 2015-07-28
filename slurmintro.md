@@ -69,13 +69,16 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 ### sinfo
 
 Shows the status of nodes in the cluster. Useful parameters:
+- `-p <partition>` print info from a specific partition
 - `-l` print more detailed info
 - `-s` print less detailed info
 
 ### squeue
 
 Lists the current job queue. Useful parameters:
-- `w <hostlist>` print only the job queue of the specified hosts
+- `-w <hostlist>` print only the job queue of the specified hosts
+- `-u <user>` print jobs from specific user
+- `-p <partition>` print jobs from specific partition
 
 quick explanation of status codes:
 - **CA** - canceled
@@ -93,13 +96,22 @@ The main command to run things in slurm. Important arguments:
 - `--multi-prog` run with different arguments each task as specified in configuration file:
   - .conf looks like this:
   ```
-  #myjob.conf
+  # myjob.conf
   0,2-3 coolprog --arg file_default
   # %t is replaced by the task number
   1,3-6 coolprog --arg file%t
   ```
   - run as `srun -n6 --multi-prog myjob.conf`
 - `-l` print task number to STDOUT
+
+### scontrol
+
+command to control the state of nodes and the system in general. Use as `scontrol <command>` Useful commands:
+-
+
+### scancel
+
+cancel a job. Use as `scancel <jobid>`
 
 ##slurm.conf
 
@@ -138,7 +150,7 @@ To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure 
 
 #####Full list of options can be found here:
 
-http://slurm.schedmd.com/slurm.conf.html
+http://slurm.schedmd.com/slurm.conf.html or `man slurm.conf`
 
 ##Troubleshooting
 
