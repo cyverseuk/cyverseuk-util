@@ -7,6 +7,7 @@
 - [Basic commands](#basic-commands)
 - [slurm.conf](slurmconf)
 - [Troubleshooting](troubleshooting)
+
 ##Basic stuff
 
 Slurm tutorial vids (playlist): https://www.youtube.com/watch?v=NH_Fb7X6Db0&list=PLZfwi0jHMBxB-Bd0u1lTT5r0C3RHUPLj-
