@@ -104,10 +104,9 @@ The main command to run things in slurm. Important arguments:
   - run as `srun -n6 --multi-prog myjob.conf`
 - `-l` print task number to STDOUT
 
-### scontrol
+###scontrol
 
 command to control the state of nodes and the system in general. Use as `scontrol <command>` Useful commands:
--
 
 ### scancel
 
