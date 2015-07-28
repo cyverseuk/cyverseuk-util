@@ -32,11 +32,13 @@ PartitionName=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTim
 ```
 These three options in the file are the ONLY thing that you need to get slurm up and running.
 Copy slurm.conf to the other machines in your network.
+
 4. Start slurm daemons:
   1. On master: `slurmctld -f /path/to/slurm.conf -Dcvvvv`
   2. On all nodes (including master if you want it to do work): `slurmd -f /path/to/slurm.conf -Dcvvvv`
 
 This will run every daemon in the foreground, omit the -D to run in background (see below for full details)
+
 5. Try `sinfo` or `squeue` to see your cluster up and running!
 ### Basic commands:
 ### slurmctld
