@@ -31,7 +31,7 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
   - `-D` run in foreground (dont daemonize)
   - `-c` clear queue, jobs and state ("clean slate")
   - `-v` verbose, each v increases verbosity *EG -vvvv is very verbose*
-  - `-L *logfile*` write messages to this file, using verboseness given by `-v`
+  - `-L *logfile*` write messages to this file, using verboseness given by `-v` *Also see SlurmctldLogFile option below*
 
 ### slurmd
 - Run on every compute node
@@ -39,7 +39,7 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
   - `-D` run in foreground (dont daemonize)
   - `-c` clear queue, jobs and state ("clean slate")
   - `-v` verbose, each v increases verbosity *EG -vvvv is very verbose*
-  - `-L *logfile*` write messages to this file, using verboseness given by `-v`
+  - `-L *logfile*` write messages to this file, using verboseness given by `-v` *Also see SlurmdLogFile option below*
 
 ###slurm.conf
 
