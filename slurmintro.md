@@ -86,6 +86,7 @@ The main command to run things in slurm. Important arguments:
   # %t is replaced by the task number
   1,3-6 coolprog --arg file%t
   ```
+  - run as `srun -n6 --multi-prog myjob.conf`
 - `-l` print task number to STDOUT
 ##slurm.conf
 
