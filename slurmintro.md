@@ -20,9 +20,6 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 2. Install slurm
   - Get tarball from http://www.schedmd.com/#repos
   - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB. you will need to have automake installed*
-  - Create a slurm.conf file (see below for values) and put it in /etc/slurm
-  - (On master) run slurmctld
-  - (On all nodes) run slurmd
 3. Create slurm.conf file
   - The most barebones slurm.conf would look like this:
 
