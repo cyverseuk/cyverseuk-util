@@ -40,6 +40,7 @@ Copy slurm.conf to the other machines in your network.
 This will run every daemon in the foreground, omit the -D to run in background (see below for full details)
 
 5. Try `sinfo` or `squeue` to see your cluster up and running!
+
 ### Basic commands:
 ### slurmctld
 - Run on master only
