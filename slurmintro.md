@@ -68,11 +68,23 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 ### sinfo
 
-Shows the status of nodes in the cluster
+Shows the status of nodes in the cluster. Useful parameters:
+- `-l` print more detailed info
+- `-s` print less detailed info
 
 ### squeue
 
-Lists the current job queue
+Lists the current job queue. Useful parameters:
+- `w <hostlist>` print only the job queue of the specified hosts
+
+quick explanation of status codes:
+- **CA** - canceled
+- **CD** - completed
+- **CG** - completing *See [troubleshooting](#troubleshooting) if jobs are blocking resources with this code*
+- **F**  - failed
+- **PD** - pending
+- **R**  - running
+- **S**  - suspended
 
 ### srun
 
@@ -88,6 +100,7 @@ The main command to run things in slurm. Important arguments:
   ```
   - run as `srun -n6 --multi-prog myjob.conf`
 - `-l` print task number to STDOUT
+
 ##slurm.conf
 
 To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure all daemons on all nodes.
