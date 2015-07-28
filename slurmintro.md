@@ -74,7 +74,7 @@ These three options in the file are the ONLY thing that you need to get slurm up
 
 **SlurmctldLogFile**=/path/to/file - the location of the log for the slurmctld
 
-**SlurmdDebug**=*level* - verboseness of slurmd logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmctld -L` or the SlurmctldLogFile option (see below)
+**SlurmdDebug**=*level* - verboseness of slurmd logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmd -L` or the SlurmdLogFile option (see below)
 
 **SlurmdLogFile**=/path/to/file - the location of the log for the slurmd
 
