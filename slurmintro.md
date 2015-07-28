@@ -21,15 +21,15 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 ###Installing
 
-1. Install MUNGE on all nodes
-  - Get tarball from https://github.com/dun/munge
+1. Install MUNGE on all nodes:
+  - get tarball from https://github.com/dun/munge
   - unzip/tar and `./configure && make install` *NB. you might need libssl-dev as a dependency*
   - create keyfile `dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key` *Copy the key to all nodes*
-  - run the munged daemon `munged`
-2. Install slurm on all nodes
-  - Get tarball from http://www.schedmd.com/#repos
+  - run the munged daemon: `munged`
+2. Install slurm on all nodes:
+  - get tarball from http://www.schedmd.com/#repos
   - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB. You will need automake*
-3. Create slurm.conf file
+3. Create slurm.conf file:
   - The most barebones slurm.conf would look like this:
 
     ```
@@ -40,7 +40,7 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
     ```
   - These three options in the file are the ONLY thing that you need to get slurm up and running.
   - See [slurm.conf](#slurmconf) below for more options
-4. Copy slurm.conf to the other nodes in your network.
+4. Copy slurm.conf to the other nodes in your network
 5. Start slurm daemons:
   1. On master: `slurmctld -f /path/to/slurm.conf -Dcvvvv`
   2. On all nodes (including master if you want it to do work): `slurmd -f /path/to/slurm.conf -Dcvvvv`
