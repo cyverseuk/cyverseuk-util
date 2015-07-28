@@ -72,7 +72,7 @@ To reload SLURM configuration run `scontrol reconfigure`. This will reconfigure 
 - **PartitionName**=partition Nodes=list,of,hosts,in,this,partition Default=YES MaxTime=INFINITE State=UP
 
 
-#####Additional options that can be handy:
+####Additional options that can be handy:
 
 **Epilog**=/path/to/script - script that is executed after every job
 
