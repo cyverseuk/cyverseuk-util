@@ -24,7 +24,8 @@ man pages for each tool: http://slurm.schedmd.com/man_index.html
   - (On master) run slurmctld
   - (On all nodes) run slurmd
 3. Create slurm.conf file
-  -```
+  -
+    ```
     # /etc/slurm/slurm.conf
     ControlMachine=hostname #Hostname of master controller. On the master itself, this should be the basic hostname as returned by hostname -s
     NodeName=comma,separated,list,of,hosts,supports,brackets[0-99] State=UNKOWN
