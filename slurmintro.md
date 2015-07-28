@@ -60,20 +60,26 @@ These three options in the file are the ONLY thing that you need to get slurm up
 2. Start slurmctld on your master
 3. Start the slurmd on all nodes (including master if you want it to perform work)
 
-Additional options that can be handy:
+#####Additional options that can be handy:
 
 **Epilog**=/path/to/script - script that is executed after every job
+
 **RebootProgram**=reboot_prg - command that should be executed to reboot a node through the "scontrol reboot_nodes" command
+
 **SlurmUser**=*user* - user that slurmctld runs as, defaults to root but should be slurm or something similar
+
 **SlurmdUser**=*user* - user that slurmd runs as, defaults to root but should be slurm or something similar
+
 **SlurmctldDebug**=*level* - verboseness of slurmctld logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmctld -L` or the SlurmctldLogFile option (see below)
+
 **SlurmctldLogFile**=/path/to/file - the location of the log for the slurmctld
+
 **SlurmdDebug**=*level* - verboseness of slurmd logging. Default is info, which is not very verbose; for debugging try 'debug5'. Dont forget to set the log location with `slurmctld -L` or the SlurmctldLogFile option (see below)
+
 **SlurmdLogFile**=/path/to/file - the location of the log for the slurmd
 
 
-
-Full list of options can be found here:
+#####Full list of options can be found here:
 
 http://slurm.schedmd.com/slurm.conf.html
 
