@@ -11,10 +11,18 @@ Admin quick start: http://slurm.schedmd.com/quickstart_admin.html
 man pages for each tool: http://slurm.schedmd.com/man_index.html
 
 ###Installing
-TODO
 
-1. Install MUNGE
+1. Install MUNGE on all nodes
+  - Get tarball from https://github.com/dun/munge
+  - unzip/tar and `./configure && make install` *NB you might need libssl-dev as a dependency*
+  - create keyfile `dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key` *Copy the key to all nodes*
+  - run the munged daemon `munged`
 2. Install slurm
+  - Get tarball from http://www.schedmd.com/#repos
+  - unzip/tar and `./configure && make install --sysconfdir=/etc/slurm` *NB you will need to have automake installed*
+  - Create a slurm.conf file (see below for values) and put it in /etc/slurm
+  - (On master) run slurmctld
+  - (On all nodes) run slurmd
 
 ### Basic commands:
 ### slurmctld
