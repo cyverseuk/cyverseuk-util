@@ -1,0 +1,4 @@
+deb http://10.0.72.7:3142/www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu/ trusty main universe 
+deb http://10.0.72.7:3142/security.ubuntu.com/ubuntu trusty-security main
+deb http://10.0.72.7:3142/research.cs.wisc.edu/htcondor/debian/stable/ wheezy contrib
+deb http://10.0.72.7:3142/apt.dockerproject.org/repo ubuntu-trusty main
