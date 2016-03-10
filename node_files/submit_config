@@ -63,7 +63,7 @@ HOSTALLOW_ADMINISTRATOR =
 HOSTALLOW_OWNER = 
 
 BIND_ALL_INTERFACES = False
-NETWORK_INTERFACE = eth0.1030
+NETWORK_INTERFACE = eth1
 ##--------------------------------------------------------------------
 ## Values set by the debian patch script:
 ##--------------------------------------------------------------------
@@ -77,7 +77,7 @@ RUN     = $(LOCAL_DIR)/run/condor
 LOG     = $(LOCAL_DIR)/log/condor
 LOCK    = $(LOCAL_DIR)/lock/condor
 SPOOL   = $(LOCAL_DIR)/lib/condor/spool
-EXECUTE = /var/lib/nova/scratch
+EXECUTE = $(LOCAL_DIR)/execute
 BIN     = $(RELEASE_DIR)/bin
 LIB     = $(RELEASE_DIR)/lib/condor
 INCLUDE = $(RELEASE_DIR)/include/condor
