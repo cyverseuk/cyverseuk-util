@@ -1,0 +1,12 @@
+universe                = docker
+docker_image            = ktpolanski/csi
+executable              = /bin/sleep
+arguments               = 5m
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+output                  = outputs/out.$(Process)
+error                   = outputs/err.$(Process)
+log                     = outputs/log.$(Process)
+request_memory          = 100G
+
+queue 1
