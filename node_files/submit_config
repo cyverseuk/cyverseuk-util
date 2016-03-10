@@ -91,7 +91,7 @@ PROCD_ADDRESS = $(RUN)/procd_pipe
 
 CONDOR_HOST = 10.0.72.17
 COLLECTOR_HOST = $(CONDOR_HOST):4080?sock=collector
-SCHEDD_HOST = submit
+#SCHEDD_HOST = submit
 
 ##  Dynamic Slot definitions
 #SLOT_TYPE_1 = cpus=100%,disk=100%,swap=100%
