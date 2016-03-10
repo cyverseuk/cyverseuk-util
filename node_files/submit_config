@@ -63,7 +63,7 @@ HOSTALLOW_ADMINISTRATOR =
 HOSTALLOW_OWNER = 
 
 BIND_ALL_INTERFACES = False
-NETWORK_INTERFACE = eth1
+NETWORK_INTERFACE = eth0
 ##--------------------------------------------------------------------
 ## Values set by the debian patch script:
 ##--------------------------------------------------------------------
