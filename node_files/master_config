@@ -102,7 +102,7 @@ NUM_SLOTS_TYPE_1 = 1
 ##  This macro determines what daemons the condor_master will start and keep its watchful eyes on.
 ##  The list is a comma or space separated list of subsystem names
 
-DAEMON_LIST = STARTD
+DAEMON_LIST = MASTER,STARTD
 
 LOWPORT = 5000
 HIGHPORT = 6000
