@@ -102,7 +102,7 @@ SCHEDD_HOST = submit
 ##  This macro determines what daemons the condor_master will start and keep its watchful eyes on.
 ##  The list is a comma or space separated list of subsystem names
 
-DAEMON_LIST = MASTER,NEGOTIATOR,COLLECTOR
+DAEMON_LIST = MASTER,SCHEDD
 
 DAEMON_LIST = $(DAEMON_LIST) SHARED_PORT
 USE_SHARED_PORT = True
