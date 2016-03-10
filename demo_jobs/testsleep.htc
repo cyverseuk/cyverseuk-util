@@ -4,6 +4,6 @@ arguments  = 5m
 request_cpus = 6
 request_memory = 10000
 
-Requirements = Target.Name == "slot1@node-13.nbi.ac.uk" || Target.name == "slot1_1@node-13.nbi.ac.uk" || Target.name == "slot1_2@node-13.nbi.ac.uk"
+#Requirements = Target.Name == "slot1@node-13.nbi.ac.uk" || Target.name == "slot1_1@node-13.nbi.ac.uk" || Target.name == "slot1_2@node-13.nbi.ac.uk"
 
 queue 4

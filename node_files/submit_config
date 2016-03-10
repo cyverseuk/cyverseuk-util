@@ -39,13 +39,36 @@ LOCAL_CONFIG_DIR = /etc/condor/config.d
 #LOCAL_CONFIG_DIR_EXCLUDE_REGEXP = ^((\..*)|(.*~)|(#.*)|(.*\.rpmsave)|(.*\.rpmnew))$
 
 ##  Use a host-based security policy. By default CONDOR_HOST and the local machine will be allowed
-#use SECURITY : HOST_BASED
+use SECURITY : HOST_BASED
 ##  To expand your condor pool beyond a single host, set ALLOW_WRITE to match all of the hosts
-#ALLOW_WRITE = 172.28.128.*,127.0.0.1
+#ALLOW_WRITE = *.cs.wisc.edu
 ##  FLOCK_FROM defines the machines that grant access to your pool via flocking. (i.e. these machines can join your pool).
 #FLOCK_FROM =
 ##  FLOCK_TO defines the central managers that your schedd will advertise itself to (i.e. these pools will give matches to your schedd).
 #FLOCK_TO = condor.cs.wisc.edu, cm.example.edu
+
+##--------------------------------------------------------------------
+## Values set by the debian patch script:
+##--------------------------------------------------------------------
+
+## For Unix machines, the path and file name of the file containing
+## the pool password for password authentication.
+#SEC_PASSWORD_FILE = $(LOCAL_DIR)/lib/condor/pool_password
+
+##  Pathnames
+RUN     = $(LOCAL_DIR)/run/condor
+LOG     = $(LOCAL_DIR)/log/condor
+LOCK    = $(LOCAL_DIR)/lock/condor
+SPOOL   = $(LOCAL_DIR)/lib/condor/spool
+EXECUTE = $(LOCAL_DIR)/lib/condor/execute
+BIN     = $(RELEASE_DIR)/bin
+LIB     = $(RELEASE_DIR)/lib/condor
+INCLUDE = $(RELEASE_DIR)/include/condor
+SBIN    = $(RELEASE_DIR)/sbin
+LIBEXEC = $(RELEASE_DIR)/lib/condor/libexec
+SHARE   = $(RELEASE_DIR)/share/condor
+
+PROCD_ADDRESS = $(RUN)/procd_pipe
 
 ALLOW_READ            = *
 ALLOW_WRITE           = *
@@ -63,46 +86,18 @@ HOSTALLOW_ADMINISTRATOR =
 HOSTALLOW_OWNER = 
 
 BIND_ALL_INTERFACES = False
-NETWORK_INTERFACE = eth1
-##--------------------------------------------------------------------
-## Values set by the debian patch script:
-##--------------------------------------------------------------------
-
-## For Unix machines, the path and file name of the file containing
-## the pool password for password authentication.
-#SEC_PASSWORD_FILE = $(LOCAL_DIR)/lib/condor/pool_password
-
-##  Pathnames
-RUN     = $(LOCAL_DIR)/run/condor
-LOG     = $(LOCAL_DIR)/log/condor
-LOCK    = $(LOCAL_DIR)/lock/condor
-SPOOL   = $(LOCAL_DIR)/lib/condor/spool
-EXECUTE = $(LOCAL_DIR)/execute
-BIN     = $(RELEASE_DIR)/bin
-LIB     = $(RELEASE_DIR)/lib/condor
-INCLUDE = $(RELEASE_DIR)/include/condor
-SBIN    = $(RELEASE_DIR)/sbin
-LIBEXEC = $(RELEASE_DIR)/lib/condor/libexec
-SHARE   = $(RELEASE_DIR)/share/condor
-
-PROCD_ADDRESS = $(RUN)/procd_pipe
+NETWORK_INTERFACE = eth0
 
 ##  What machine is your central manager?
 
 CONDOR_HOST = 10.0.72.17
 COLLECTOR_HOST = $(CONDOR_HOST):4080?sock=collector
-SCHEDD_HOST = submit
-
-##  Dynamic Slot definitions
-#SLOT_TYPE_1 = cpus=100%,disk=100%,swap=100%
-#SLOT_TYPE_1_PARTITIONABLE = True
-
-#NUM_SLOTS_TYPE_1 = 1
+#SCHEDD_HOST = 10.0.72.7
 
 ##  This macro determines what daemons the condor_master will start and keep its watchful eyes on.
 ##  The list is a comma or space separated list of subsystem names
 
-DAEMON_LIST = MASTER,SCHEDD
+DAEMON_LIST = MASTER, SCHEDD
 
 DAEMON_LIST = $(DAEMON_LIST) SHARED_PORT
 USE_SHARED_PORT = True
