@@ -47,6 +47,23 @@ use SECURITY : HOST_BASED
 ##  FLOCK_TO defines the central managers that your schedd will advertise itself to (i.e. these pools will give matches to your schedd).
 #FLOCK_TO = condor.cs.wisc.edu, cm.example.edu
 
+ALLOW_READ            = *
+ALLOW_WRITE           = *
+ALLOW_ADMINISTRATOR   = *
+ALLOW_CONFIG          = *
+ALLOW_NEGOTIATOR      = *
+ALLOW_DAEMON          = *
+
+# Clear out any old-style HOSTALLOW settings:
+HOSTALLOW_READ = 
+HOSTALLOW_WRITE = 
+HOSTALLOW_DAEMON = 
+HOSTALLOW_NEGOTIATOR = 
+HOSTALLOW_ADMINISTRATOR = 
+HOSTALLOW_OWNER = 
+
+BIND_ALL_INTERFACES = False
+NETWORK_INTERFACE = eth0
 ##--------------------------------------------------------------------
 ## Values set by the debian patch script:
 ##--------------------------------------------------------------------
@@ -70,21 +87,6 @@ SHARE   = $(RELEASE_DIR)/share/condor
 
 PROCD_ADDRESS = $(RUN)/procd_pipe
 
-ALLOW_READ            = *
-ALLOW_WRITE           = *
-ALLOW_ADMINISTRATOR   = *
-ALLOW_CONFIG          = *
-ALLOW_NEGOTIATOR      = *
-ALLOW_DAEMON          = *
-
-# Clear out any old-style HOSTALLOW settings:
-HOSTALLOW_READ = 
-HOSTALLOW_WRITE = 
-HOSTALLOW_DAEMON = 
-HOSTALLOW_NEGOTIATOR = 
-HOSTALLOW_ADMINISTRATOR = 
-HOSTALLOW_OWNER = 
-
 BIND_ALL_INTERFACES = False
 NETWORK_INTERFACE = eth0
 
@@ -93,6 +95,12 @@ NETWORK_INTERFACE = eth0
 CONDOR_HOST = 10.0.72.17
 COLLECTOR_HOST = $(CONDOR_HOST):4080?sock=collector
 #SCHEDD_HOST = 10.0.72.7
+
+##  Dynamic Slot definitions
+#SLOT_TYPE_1 = cpus=100%,disk=100%,swap=100%
+#SLOT_TYPE_1_PARTITIONABLE = True
+
+#NUM_SLOTS_TYPE_1 = 1
 
 ##  This macro determines what daemons the condor_master will start and keep its watchful eyes on.
 ##  The list is a comma or space separated list of subsystem names
