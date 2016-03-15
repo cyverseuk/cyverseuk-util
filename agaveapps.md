@@ -22,6 +22,35 @@ let's add it to our PATH:
 
 ``export PATH=$PATH:`pwd`/foundation-cli/bin`` 
 
+Now that we can access the API commands, let's set up the keys to allow API 
+access. You'll need to specify a tenant, wich is probably going to be 
+`iplantc.org`, which at the time of writing is option 3:
+
+```bash
+vandene@n80295:~$ tenants-init
+Please select a tenant from the following list:
+[0] agave.prod
+[1] araport.org
+[2] designsafe
+[3] iplantc.org
+[4] irec
+[5] irmacs
+[6] tacc.prod
+[7] vdjserver.org
+[8] wso2.agave.staging
+[9] xsede.org
+[10] xsede.org.staging
+Your choice [3]: 3
+You are now configured to interact with the APIs at https://agave.iplantc.org/
+vandene@n80295:~$
+```
+
+Then create a new client:
+
+`clients-create -N cli_client -u username -S`
+
+You'll be asked for your password and a message will confirm the creation of 
+your client. Next, we'll create login tokens
 
 ## Part 2 - System registration (skip if using TGAC hardware)
 ## Part 3 - App registration
