@@ -20,7 +20,7 @@ This will create a
 `foundation-cli` directory in your current directory. To shorten our commands,
 let's add it to our PATH: 
 
-`export PATH=$PATH:\`pwd\`/foundation-cli/bin`. 
+``export PATH=$PATH:`pwd`/foundation-cli/bin`` 
 
 
 ## Part 2 - System registration (skip if using TGAC hardware)
