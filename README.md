@@ -1,9 +1,10 @@
-#iplantuk-util
+#cyverseuk-util
 
-A collection of utility scripts for the iplant cluster at TGAC
+This repo contains files scripts and documentation on the CyVerse UK hardware at TGAC
 
-[blast-condor.pl](blast-condor.md): split up BLAST queries for running on condor
+##hpc_scripts
+*[blast-condor.pl](hpc_scripts/blast-condor.md): split up BLAST queries for running on condor
 
-[condor-summ.pl](condor-summ.md): provide load summary of all systems in the pool
+*[condor-summ.pl](hpc_scripts/condor-summ.md): provide load summary of all systems in the pool
 
-[slurmintro.md](slurmintro.md): A short intro to slurm, also quick reference
+*[slurmintro.md](hpc_scripts/slurmintro.md): A short intro to slurm, also quick reference
