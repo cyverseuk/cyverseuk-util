@@ -9,4 +9,4 @@ Step by step guide for deploying a node:
 * get [/etc/condor/condor_config](node_config)
 * copy and load docker images (see here) - images installed are debian, ubuntu, ubuntu:wily, ubuntu:trusty, ubuntu:precise
 * start htcondor - `sudo service condor start`
-* check condor_status to see if your node pops up
+* run `condor_status` to see if your node pops up
