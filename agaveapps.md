@@ -190,7 +190,15 @@ be JSON encoded before pasting it into the JSON file using the `jsonpki` command
 
 A password for the file can be specified using `--password`. 
 
+### Registering the execution system
 
+Now that we have a [completed JSON file](), let's use it to register the system on 
+Agave:
 
+`vandene@n80295:~$ systems-addupdate -v -F TutSystem.json`
+
+A large amount of JSON describing our new system will be returned to confirm the
+registration. Now that we have an execution system, let's move on to registering
+our workflow as an App in the next part.
 ## Part 3 - App registration
 ## Part 4 - Discovery Environment
