@@ -160,7 +160,7 @@ This can be specified using a Login object, which is specified as follows:
 
 ```
 "login": {
-  "host"    : "149.155.193.71",
+  "host"    : "yourhost.example.org",
   "port"    : "22",
   "protocol": "SSH",
   "auth"    : {
@@ -189,6 +189,8 @@ be JSON encoded before pasting it into the JSON file using the `jsonpki` command
 `json-pki --private /path/to/private/id_rsa`
 
 A password for the file can be specified using `--password`. 
+
+
 
 ## Part 3 - App registration
 ## Part 4 - Discovery Environment

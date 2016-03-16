@@ -1,0 +1,45 @@
+{
+  "id"            : "myTutorialMachine",
+  "name"          : "A machine for the TGAC Agave tutorial",
+  "type"          : "EXECUTION",
+  "executionType" : "CLI",
+  "scheduler"     : "FORK",
+
+  "storage": {
+    "host" : "data.iplantcollaborative.org",
+    "port" : 1247,
+    "protocol" : "IRODS",
+    "homedir" : "/iplant/home/username",
+    "rootdir" : "/iplant/home",
+    "auth" : {
+      "type": "PASSWORD",
+      "username": "username",
+      "password": "changethis"
+    },
+    "zone" : "iplant",
+    "resource" : "bitol"
+  },
+
+  "queues": [ { 
+    "name": "normal", 
+    "default": true,
+    "maxRequestedTime": "24:00:00",
+    "maxJobs": 10, 
+    "maxUserJobs": 5, 
+    "maxNodes": 1,
+    "maxMemoryPerNode": "4GB", 
+    "maxProcessorsPerNode": 12,
+    "customDirectives": null 
+  } ],
+  
+  "login": {
+  "host"    : "yourhost.example.org",
+  "port"    : "22",
+  "protocol": "SSH",
+    "auth"    : {
+      "type"      : "PASSWORD",
+      "username"  : "username",
+      "password"  : "changethis"
+    }
+  }
+}
