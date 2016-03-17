@@ -1,0 +1,27 @@
+{
+  "name"          : "blastapp-tutorial",
+  "label"         : "TGAC tutorial BLAST app",
+  "version"       : "0.0.1",
+  "executionType" : "CLI",
+
+  "executionSystem" : "myhost.example.org",
+  "deploymentPath"  : "username/tgac_tutorial",
+  "templatePath"    : "wrapper.sh",
+  "testPath"        : "test.sh",
+  "parallelism"     : "SERIAL",
+
+  "inputs" : [ 
+    {
+      "id": "query",
+      "details" : { "label": "Query" },
+      "value": {"required" : "true"}
+    },
+    {
+      "id": "database",
+      "details" : { "label": "Database" },
+      "value": {"required" : "true"}
+    }
+  ],
+
+  "parameters" : [ ]
+}

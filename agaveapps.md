@@ -302,5 +302,48 @@ but they are included in this repo to make things easy:
 
 Now that we have everything, let's get our assets setup in the datastore. Go back to your DE window,
 and go the the tgac_tutorial folder under your username (if you weren't already there). Create a folder
-called lib, and navigate to it. We'll put our BLAST executables here. 
+called lib, and navigate to it. We'll put our BLAST executables here. Go to the "Upload" menu on the 
+top left-hand corner of the file navigation window. The easiest way is to upload the executables from
+this repo directly, so choose "Import from URL...". In the dialog that pops up, put the addresses of
+the executables in two separate fields:
+
+`https://github.com/erikvdbergh/cyverseuk-util/raw/master/lib/blastn`
+
+`https://github.com/erikvdbergh/cyverseuk-util/raw/master/lib/makeblastdb`
+
+Notifications will pop up informing you that the upload has started. After a few minutes, refresh the directory
+with the "Refresh" button at the top of the file manager window and both files should appear. Using
+the file tree, navigate back to the parent "tgac_tutorial" directory. We will upload our wrapper and test
+scripts here. Again, go to the "Upload" menu, but choose the "Simple Upload from Desktop" option.
+Using the "Browse..." button, navigate to your "wrapper.sh" script and open it. Do the same in the
+next field for your "test.sh" script, and click "Upload". After receiving a notification that the 
+upload was successful, refresh youor directory again. You should now see our test.sh and wrapper.sh
+scripts in the folder, together with the lib directory.
+
+### Registering App in Agave
+Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier
+(If needed, refresh your access tokens with `auth-tokens-refresh`).
+Navigate to where the file is stored (we'll assume you've named it TutApp.json) and run the apps-addupdate command:
+
+`apps-addupdate -v -F TutApp.json`
+
+A bunch of JSON describing your app will be returned, confirming the registration of our app.
+
+### Running our App
+
+Finally, we can run our App! We'll need one more (short) JSON file to run a new job:
+
+```json
+{
+  "name"    : "blasttest",
+  "appId"   : "blastapp-tutorial-0.0.1",
+  "archive" : "true"
+}
+```
+
+We'll save this file as RunApp.json and submit it as a job with the jobs-submit command:
+
+`jobs-submit -v -W -F RunApp.json`
+
+The -W flag in this command tells it to keep watching the job in the current window, with can be stopped with Ctrl-C.
 ## Part 4 - Discovery Environment
