@@ -1,0 +1,10 @@
+{
+  "name"    : "blasttest",
+  "appId"   : "blastapp-tutorial-0.0.1",
+  "archive" : "true",
+  "inputs": {
+    "query"   : "https://github.com/erikvdbergh/cyverseuk-util/raw/master/testquery.fa",
+    "database": "https://github.com/erikvdbergh/cyverseuk-util/raw/master/testdb.fa"
+  }
+}
+

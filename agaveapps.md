@@ -337,7 +337,11 @@ Finally, we can run our App! We'll need one more (short) JSON file to run a new 
 {
   "name"    : "blasttest",
   "appId"   : "blastapp-tutorial-0.0.1",
-  "archive" : "true"
+  "archive" : "true",
+  "inputs": {
+    "query"   : "https://github.com/erikvdbergh/cyverseuk-util/raw/master/testquery.fa",
+    "database": "https://github.com/erikvdbergh/cyverseuk-util/raw/master/testdb.fa"
+  }
 }
 ```
 
