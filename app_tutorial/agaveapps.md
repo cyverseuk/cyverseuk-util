@@ -350,4 +350,9 @@ We'll save this file as RunApp.json and submit it as a job with the jobs-submit 
 `jobs-submit -v -W -F RunApp.json`
 
 The -W flag in this command tells it to keep watching the job in the current window, with can be stopped with Ctrl-C.
+
+After your job has completed, your outputs, logs and error messages will be in a folder that is
+generated automatically on your apps storage system (which is the CyVerse data store in our case).
+To view them on the CyVerse data store, check the "archive" folder under your username. All your
+job output will be in a separate subfolder under the "jobs" folder.
 ## Part 4 - Discovery Environment
