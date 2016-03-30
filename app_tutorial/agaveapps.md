@@ -246,8 +246,16 @@ more details, see the [CyVerse wiki](https://pods.iplantcollaborative.org/wiki/d
 
 First, login to the DE at [https://de.iplantcollaborative.org/]. You'll be presented with a desktop
 like environment. Click on the "Data" button. This will open up a file manager window, with a file
-tree on the left hand side. Here, click on the folder with your username (at the top). We'll create
-a new folder to hold our apps first. Go to "File" and select "New Folder...". Name the new folder
+tree on the left hand side. 
+
+![DE "Data" file manager](de.png)
+
+Here, click on the folder with your username (at the top). We'll create
+a new folder to hold our apps first. Go to "File" and select "New Folder...". 
+
+![The new folder menu](newfolder.png)
+
+Name the new folder
 "TGAC_tutorial" and click "OK" to confirm. Navigate to our newly created folder by clicking on it.
 This is where our app's assets will live, which we'll create in the next sections.
 
@@ -304,7 +312,11 @@ Now that we have everything, let's get our assets setup in the datastore. Go bac
 and go the the tgac_tutorial folder under your username (if you weren't already there). Create a folder
 called lib, and navigate to it. We'll put our BLAST executables here. Go to the "Upload" menu on the 
 top left-hand corner of the file navigation window. The easiest way is to upload the executables from
-this repo directly, so choose "Import from URL...". In the dialog that pops up, put the addresses of
+this repo directly, so choose "Import from URL...". 
+
+![The import from url menu](importurl.png)
+
+In the dialog that pops up, put the addresses of
 the executables in two separate fields:
 
 `https://github.com/erikvdbergh/cyverseuk-util/raw/master/lib/blastn`
@@ -319,6 +331,8 @@ Using the "Browse..." button, navigate to your "wrapper.sh" script and open it. 
 next field for your "test.sh" script, and click "Upload". After receiving a notification that the 
 upload was successful, refresh youor directory again. You should now see our test.sh and wrapper.sh
 scripts in the folder, together with the lib directory.
+
+![Final folder structure](finalfolder.png)
 
 ### Registering App in Agave
 Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier
