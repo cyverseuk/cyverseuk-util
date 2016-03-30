@@ -355,4 +355,6 @@ After your job has completed, your outputs, logs and error messages will be in a
 generated automatically on your apps storage system (which is the CyVerse data store in our case).
 To view them on the CyVerse data store, check the "archive" folder under your username. All your
 job output will be in a separate subfolder under the "jobs" folder.
+
+![Job output in DE](joboutput.png)
 ## Part 4 - Discovery Environment
