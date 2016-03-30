@@ -3,6 +3,28 @@
 This tutorial is based on Sam Mason's tutorial, and updated and adjusted 
 slightly for TGAC hardware.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+  - [Overview](#overview)
+  - [Part 1 - Setting up Agave API Access](#part-1---setting-up-agave-api-access)
+  - [Part 2 - System registration (skip if using TGAC hardware)](#part-2---system-registration-skip-if-using-tgac-hardware)
+    - [Execution System JSON - System Basics](#execution-system-json---system-basics)
+    - [Execution System JSON - Storage](#execution-system-json---storage)
+    - [Execution System JSON - Queues](#execution-system-json---queues)
+    - [Execution System JSON - Login](#execution-system-json---login)
+    - [Registering the execution system](#registering-the-execution-system)
+  - [Part 3 - App registration](#part-3---app-registration)
+    - [App JSON - Front matter](#app-json---front-matter)
+    - [Storing App assets with CyVerse](#storing-app-assets-with-cyverse)
+    - [Creating the App assets](#creating-the-app-assets)
+    - [Registering App in Agave](#registering-app-in-agave)
+    - [Running our App](#running-our-app)
+  - [Part 4 - Discovery Environment](#part-4---discovery-environment)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Overview
 In this tutorial, you'll set up a simple app that runs through the Agave API 
 on the TGAC HTCondor cluster or your own hardware. The only preliminary is 
