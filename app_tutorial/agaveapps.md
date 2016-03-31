@@ -154,7 +154,8 @@ mechanism would be as follows:
 ```
 
 Putting your password in plaintext is usually a bad idea, so see below for setting
-up alternative login methods using public/private keypairs.
+up alternative login methods using public/private keypairs (this would be impossible
+when using the iPlant datastore however).
 ### Execution System JSON - Queues
 All execution systems need a default Queue to which jobs are submitted. In our
 example, we are using a simple CLI system, so there are no scheduler queues that
@@ -214,8 +215,8 @@ A password for the file can be specified using `--password`.
 
 ### Registering the execution system
 
-Now that we have a [completed JSON file](TutSystem.json), let's use it to register the system on 
-Agave:
+Now that we have defined our system, you can find the completed JSON file here: [TutSystem.json]. 
+Let's use it to register the system on Agave:
 
 `vandene@n80295:~$ systems-addupdate -v -F TutSystem.json`
 
@@ -357,7 +358,7 @@ scripts in the folder, together with the lib directory:
 ![Final folder structure](finalfolder.png)
 
 ### Registering App in Agave
-Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier
+Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier: [TutApp.json].
 (If needed, refresh your access tokens with `auth-tokens-refresh`).
 Navigate to where the file is stored (we'll assume you've named it TutApp.json) and run the apps-addupdate command:
 
