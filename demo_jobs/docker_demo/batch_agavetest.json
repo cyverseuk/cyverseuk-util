@@ -1,0 +1,22 @@
+{ 
+  "name": "dockertest",
+  "shortDescription": "Docker HTCondor workaround",
+  "longDescription": "Using Batch submission to use Condor, necessary right now until docker universe is supported...",
+  "version": "0.1.1",
+  "deploymentSystem": "cyverseUK-storage",
+  "deploymentPath": "app-assets/batchtest",
+  "executionSystem": "cyverseUK-Batch",
+  "executionType": "CLI", 
+  "parallelism": "SERIAL",
+  "templatePath": "wrapper.sh", 
+  "testPath": "test/test.sh",
+  "tags": [ "testing" ],
+  "ontology": [ ],
+  "inputs": [ {
+    "id": "dataset",
+    "details": { "label": "Dataset",
+      "description": "The dataset to plot"
+    }
+  } ],
+  "parameters": []
+}

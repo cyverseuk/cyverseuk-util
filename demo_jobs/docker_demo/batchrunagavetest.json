@@ -1,0 +1,10 @@
+{
+  "name" : "erikstest",
+  "appId" : "eriks-Batchtest-0.1.2",
+  "archive" : true,
+  "inputs": {
+    "dataset": [
+      "agave://cyverseUK-storage/erikvdbergh/inputs/testdata.csv"
+    ]
+  }
+}
