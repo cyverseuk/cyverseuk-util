@@ -10,18 +10,22 @@
   "testPath"        : "test.sh",
   "parallelism"     : "SERIAL",
 
-  "inputs" : [ 
-    {
+  "inputs" : [ {
       "id": "query",
-      "details" : { "label": "Query" },
-      "value": {"required" : "true"}
+      "details" : {
+        "label": "Query" ,
+        "description": "FASTA file with query sequence(s)"
+      },
+      "value": { "required" : "true" }
     },
     {
       "id": "database",
-      "details" : { "label": "Database" },
+      "details" : {
+        "label": "Database" ,
+        "description": "FASTA file with sequences to search (database)"
+      },
       "value": {"required" : "true"}
     }
   ],
-
   "parameters" : [ ]
 }
