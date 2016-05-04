@@ -239,21 +239,27 @@ and specify a "deploymentSystem" parameter like so:
 Finally, we'll specify out apps inputs:
 
 ```json
-"inputs": [ {
+"inputs" : [ {
     "id": "query",
-    "details": { "label": "Query",
+    "details" : {
+      "label": "Query" ,
       "description": "FASTA file with query sequence(s)"
-    }
+    },
+    "value": { "required" : "true" }
   },
   {
     "id": "database",
-    "details": { "label": "Database",
+    "details" : {
+      "label": "Database" ,
       "description": "FASTA file with sequences to search (database)"
-    }
-  } ]
+    },
+    "value": {"required" : "true"}
+  }
+],
+"parameters" : [ ]
   ```
 
-Now that we have specified this, we'll have to actually upload our app's assets to CyVerse.
+We're leaving parameters empty, but we could add any BLAST command line parameters here. Now that we have specified this, we'll have to actually upload our app's assets to CyVerse.
 
 ### Storing App assets with CyVerse
 
