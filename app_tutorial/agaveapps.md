@@ -192,7 +192,7 @@ If necessary, a password for the file can be specified using `--password`.
 
 ### Registering the execution system
 
-Now that we have defined our system, you can find the completed JSON file here: [TutSystem.json](). 
+Now that we have defined our system, you can find the completed JSON file here: [TutSystem.json](TutSystem.json). 
 Let's use it to register the system on Agave:
 
 `vandene@n80295:~$ systems-addupdate -v -F TutSystem.json`
