@@ -114,48 +114,25 @@ system. In this case, we assume there is no scheduler running and so we choose
 `CLI`, with `FORK` as a scheduler. See [the Agave docs](http://agaveapi.co/documentation/tutorials/system-management-tutorial/#execution-systems)
 for more details on the Scheduler variables.
 ### Execution System JSON - Storage
-All Execution systems need a Storage system from which they will draw data.
-Assuming your data lives on the CyVerse servers, we'll use that datastore for 
-this example. 
+All Execution systems need to define storage as scratch space. For this example, we'll assume you have a scratch directory mounted somewhere on /mnt/ (an SSHFS for example)
 
 ```json
 "storage": {
-  "host" : "data.iplantcollaborative.org",
-  "port" : 1247,
-  "protocol" : "IRODS",
-  "homedir" : "/iplant/home/username",
-  "rootdir" : "/iplant/home",
+  "host" : "yourhost.example.org",
+  "port" : 22,
+  "protocol" : "SFTP",
+  "homedir" : "/mnt/scratch/username",
+  "rootdir" : "/mnt/scratch",
   "auth" : {
     "type": "PASSWORD",
-    "username": "username",
-    "password": "changethis"
+    "username"  : "username",
+    "password" : "password"
   },
-  "zone" : "iplant",
-  "resource" : "bitol"
 }
 ```
 
-Remember to change your username and password in the above example! Obviously,
-if you are using an alternative storage system, you'll need to change those 
-variables as well. A simple example using your own machine and SFTP as a transfer
-mechanism would be as follows:
+If you are uncomfortable with putting your password in plaintext, see below for specifying an `auth` object with SSHKEYS.
 
-```json
-"storage": {                                                                    
-  "host" : "yourhost.example.org",                                      
-  "port" : 22,                                                                
-  "protocol" : "SFTP",                                                         
-  "auth" : {                                                                    
-    "type": "PASSWORD",                                                         
-    "username": "username",                                                     
-    "password": "changethis"                                                    
-  },                                                                            
-}     
-```
-
-Putting your password in plaintext is usually a bad idea, so see below for setting
-up alternative login methods using public/private keypairs (this would be impossible
-when using the iPlant datastore however).
 ### Execution System JSON - Queues
 All execution systems need a default Queue to which jobs are submitted. In our
 example, we are using a simple CLI system, so there are no scheduler queues that
