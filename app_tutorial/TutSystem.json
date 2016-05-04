@@ -8,7 +8,7 @@
   "storage": {
     "host" : "yourhost.example.org",
     "port" : 22,
-    "protocol" : "SFTP,
+    "protocol" : "SFTP",
     "homedir" : "/mnt/scratch/username",
     "rootdir" : "/mnt/scratch",
     "auth" : {
