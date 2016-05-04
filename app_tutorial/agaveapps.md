@@ -236,6 +236,23 @@ and specify a "deploymentSystem" parameter like so:
 
 `"deploymentSystem" : "data.iplantcollaborative.org",`
 
+Finally, we'll specify out apps inputs:
+
+```json
+"inputs": [ {
+    "id": "query",
+    "details": { "label": "Query",
+      "description": "FASTA file with query sequence(s)"
+    }
+  },
+  {
+    "id": "database",
+    "details": { "label": "Database",
+      "description": "FASTA file with sequences to search (database)"
+    }
+  } ]
+  ```
+
 Now that we have specified this, we'll have to actually upload our app's assets to CyVerse.
 
 ### Storing App assets with CyVerse
@@ -339,7 +356,7 @@ scripts in the folder, together with the lib directory:
 ![Final folder structure](finalfolder.png)
 
 ### Registering App in Agave
-Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier: [TutApp.json].
+Now that our assets are in place, we can register our app in Agave using the JSON file we wrote earlier: [TutApp.json](TutApp.json).
 (If needed, refresh your access tokens with `auth-tokens-refresh`).
 Navigate to where the file is stored (we'll assume you've named it TutApp.json) and run the apps-addupdate command:
 
