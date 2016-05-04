@@ -234,7 +234,9 @@ already present on the system!*. This means that you need admin access to your e
 Often this is not the case. To remedy this, we can store our apps assets on the CyVerse Datastore
 and specify a "deploymentSystem" parameter like so:
 
-`"deploymentSystem" : "data.iplantcollaborative.org",`
+```json
+"deploymentSystem" : "data.iplantcollaborative.org",
+```
 
 Finally, we'll specify out apps inputs:
 
