@@ -188,7 +188,7 @@ be JSON encoded before pasting it into the JSON file using the `jsonpki` command
 
 `json-pki --private /path/to/private/id_rsa`
 
-A password for the file can be specified using `--password`. 
+If necessary, a password for the file can be specified using `--password`. 
 
 ### Registering the execution system
 
