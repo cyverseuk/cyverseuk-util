@@ -294,8 +294,12 @@ the wrapper script:
 QUERY="${query}"
 DATABASE="${database}"
 
-lib/./makeblastdb -dbtype nucl -in $DATABASE -out db
-lib/./blastn -query $QUERY -db db
+# These two lines are necessary because permissions get lost in the Agave transfer
+chmod u+x lib/makeblastdb
+chmod u+x lib/blastn 
+
+lib/makeblastdb -dbtype nucl -in $DATABASE -out db
+lib/blastn -query $QUERY -db db
 
 return $!;
 ```
