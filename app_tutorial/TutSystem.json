@@ -6,18 +6,16 @@
   "scheduler"     : "FORK",
 
   "storage": {
-    "host" : "data.iplantcollaborative.org",
-    "port" : 1247,
-    "protocol" : "IRODS",
-    "homedir" : "/iplant/home/username",
-    "rootdir" : "/iplant/home",
+    "host" : "yourhost.example.org",
+    "port" : 22,
+    "protocol" : "SFTP,
+    "homedir" : "/mnt/scratch/username",
+    "rootdir" : "/mnt/scratch",
     "auth" : {
       "type": "PASSWORD",
       "username": "username",
       "password": "changethis"
     },
-    "zone" : "iplant",
-    "resource" : "bitol"
   },
 
   "queues": [ { 
