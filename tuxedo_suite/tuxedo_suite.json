@@ -1,0 +1,722 @@
+{
+    "is_public": false,
+    "type": "executable",
+    "version": "0.8.1",
+    "description": "Tuxedo suite of tools to assess levels of differential expression between up to 4 separate conditions. The Tuxedo suite: Tophat2>Cufflinks>Cuffmerge>Cuffdiff>CummRbund. http://www.nature.com/nprot/journal/v7/n3/full/nprot.2012.016.html \nworkflow v1.0\n",
+    "id": "cyverseUK-tuxedosuite",
+    "name": "Tuxedo suite PE up to 4 conditions",
+    "deploymentSystem":"cyverseUK-Storage",
+    "deploymentPath":"agave://cyverseUK-Storage/app-assets/tuxedo_suite",
+    "executionSytem":"cyverseUK-Batch",
+    "executionType":"CLI",
+    "templatePath":"wrapper.sh",
+    "testPath":"test/test.sh",
+    "longDescription":"This workflow carries out differential expression analysis using the Tuxedo suite of tools. In this workflow: TopHat v2.0.9,  Cufflinks package (including Cuffmerge and Cuffdiff) v2.2.1 and CummeRbund 2.4.1-1.\nInput files required: \n1) Paired end sequencing RNA-seq reads for each condition/replicate\n2) A reference genome in Fasta format OR select reference genome hosted on iPlant  from drop down menu\n3) A genome annotation file in GFF3 or GTF2 format (http://cole-trapnell-lab.github.io/cufflinks/file_formats/) OR select annotation hosted on iPlant from drop down menu\n4) OPTIONAL- GTF masking file (containing transcripts to be ignored)\nGeneral settings: \nThe tool settings in the app below can be changed but are set as the default values (as dictated by each program in the workflow). If you are using the Tuxedo suite of tools for the first time we recommend using the default values in the first instance. \nProgram manuals:\nTophat https://ccb.jhu.edu/software/tophat/manual.shtml\n Cufflinks-Cuffdiff http://cole-trapnell-lab.github.io/cufflinks/manual/\nCummeRbund http://compbio.mit.edu/cummeRbund/manual_2_0.html\n",
+    "inputs": [
+       {
+           "id" : "input1",
+           "details": {
+               "argument":"-input1",
+               "description":"Enter the left reads (R1) for all condition 1 replicates",
+               "label":"Condition 1- Left Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input2",
+           "details": {
+               "argument":"-input2",
+               "description":"Enter the Right reads (R2) for all condition 1 replicates",
+               "label":"Condition 1- Right Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input3",
+           "details": {
+               "argument":"-input3",
+               "description":"Enter the left reads (R1) for all condition 2 replicates",
+               "label":"Condition 2- Left Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input4",
+           "details": {
+               "argument":"-input4",
+               "description":"Enter the left reads (R2) for all condition 2 replicates in the   same sample order as for R1",
+               "label":"Condition 2- Right Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input5",
+           "details": {
+               "argument":"-input5",
+               "description":"Enter the left reads (R1) for all condition 3 replicates in the   same sample order as for R1",
+               "label":"Condition 3- Left Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input6",
+           "details": {
+               "argument":"-input6",
+               "description":"Enter the right reads (R2) for all condition 3 replicates in the   same sample order as for R1",
+               "label":"Condition 3- Right Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input7",
+           "details": {
+               "argument":"-input7",
+               "description":"Enter the left reads (R1) for all condition 4 replicates in the   same sample order as for R1",
+               "label":"Condition 4- Left Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "input8",
+           "details": {
+               "argument":"-input8",
+               "description":"Enter the right reads (R2) for all condition 4 replicates in the   same sample order as for R1",
+               "label":"Condition 4- Right Read File(s)"
+           },
+           "value": {
+               "required":true,
+               "visible":true
+           }
+       },
+       {
+           "id" : "refgen",
+           "details": {
+               "argument":"-indx",
+               "description":"Reference genome for aligning reads",
+               "label":"Reference genome (FASTA)"
+           },
+           "value": {
+               "required":false,
+               "visible":true
+           }
+       },
+       {
+           "id" : "refann",
+           "details": {
+               "argument":"-gtf",
+               "description":"Reference annotation for aligning reads in GTF or GFF3 format",
+               "label":"Reference annotation (GFF3/GTF)"
+           },
+           "value": {
+               "required":false,
+               "visible":true
+           }
+       },
+       {
+           "id" : "maskfile",
+           "details": {
+               "argument":"-o",
+               "description":"Masking file containing transcripts to be ignored (GTF)",
+               "label":"Masking file"
+           },
+           "value": {
+               "required":false,
+               "visible":true
+           }
+       },
+       {
+           "id" : "maskfile",
+           "details": {
+               "argument":"-E",
+               "description":"Cuffdiff - Masking file containing transcripts to be ignored (GTF)",
+               "label":"Masking file"
+           },
+           "value": {
+               "required":false,
+               "visible":true
+           }
+       },
+    ],
+    "parameters": [
+        {
+            "id" : "lab1",
+            "details": {
+              "description": "Enter an identifier for this condition - **Use _ instead of spa  ces** e.g. 2_hours",
+              "argument":"-lab1",
+              "label":""
+            },
+            "value":{
+              "default":"condition_1",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "lab2",
+            "details": {
+              "description": "Enter an identifier for this condition - **Use _ instead of spa  ces** e.g. 2_hours",
+              "argument":"-lab2",
+              "label":"Condition 2 label (for R plots, use underscore instead of spaces betw  een words)"
+            },
+            "value":{
+              "default":"condition_2",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "lab3",
+            "details": {
+              "description": "Enter an identifier for this condition - **Use _ instead of spa  ces** e.g. 2_hours",
+              "argument":"-lab3",
+              "label":"Condition 3 label (for R plots, use underscore instead of spaces betw  een words)"
+            },
+            "value":{
+              "default":"condition_3",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "lab4",
+            "details": {
+              "description": "Enter an identifier for this condition - **Use _ instead of spa  ces** e.g. 2_hours",
+              "argument":"-lab4",
+              "label":"Condition 4 label (for R plots, use underscore instead of spaces betw  een words)"
+            },
+            "value":{
+              "default":"condition_4",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "indpre",
+            "details": {
+              "description": "Enter the prefix you would like your index files to have (excluding the suffix)",
+              "argument":"-indpre",
+              "label":"Index file prefix (excluding suffix)"
+            },
+            "value":{
+              "default":"index_name",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "fastqscale",
+            "details": {
+              "description": "Select a scale for quality in FASTQ files",
+              "argument":"",
+              "label":""
+            },
+            "value":{
+              "enumValues":[ {
+                               " ":"Sanger (PHRED33)"
+                             },
+                             {
+                               "-g":"Illumina 1.3-1.8 (PHRED64)"
+                             },
+                             {
+                               " ":"Illumina 1.9 (PHRED33)"
+                             },
+                             {
+                               "-g":"Solexa1.3 (PHRED64)"
+                             } ],
+              "default":{ " ":"Illumina 1.9 (PHRED33)" },
+              "required":true,
+              "type":"enumeration",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "libtype",
+            "details": {
+              "description": "Select the library type that was used to construct your RNA-seq",
+              "argument":"-e",
+              "label":""
+            },
+            "value":{
+              "enumValues":[
+                            "fr-unstranded",
+                            "fr-firststrand",
+                            "fr-secondstrand"
+                           ],
+              "default":"fr-unstranded",
+              "required":true,
+              "type":"enumeration",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "sensitivity",
+            "details": {
+              "description": "Select the speed/sensitivity of alignment/mapping",
+              "argument":"-f",
+              "label":""
+            },
+            "value":{
+              "enumValues":[
+                            {"4":"Very sensitive (slowest)"},
+                            {"3":"Sensitive (slower)"},
+                            {"2":"Less Sensitive (faster)"},
+                            {"1":"Least sensitive (fastest)"}
+                           ],
+              "default":{"3":"Sensitive (slower)"},
+              "required":true,
+              "type":"enumeration",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "insertsize",
+            "details": {
+              "description": "Select the \"Insert\" size, the distance between the sequenced forward and reverse reads",
+              "argument":"-a",
+              "label":"Mate-pair inner distance"
+            },
+            "value":{
+              "default":"50",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "stdev",
+            "details": {
+              "description": "The standard deviation for the distribution on inner distances between mate pairs",
+              "argument":"-b",
+              "label":"Mate-pair inner distance standard deviation"
+            },
+            "value":{
+              "required":false,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "minanchor",
+            "details": {
+              "description": "TopHat will report junctions spanned by reads with at least thi s many bases on each side of the junction (-a)",
+              "argument":"-i",
+              "label":"Minimum anchor length"
+            },
+            "value":{
+              "default":"8",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "minintron",
+            "details": {
+              "description": "The minimum intron length. TopHat will ignore donor/acceptor pa  irs closer than this many bases apart (-i)",
+              "argument":"-k",
+              "label":"The minimum intron length"
+            },
+            "value":{
+              "default":"70",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "maxintron",
+            "details": {
+              "description": "The maximum intron length. When searching for junctions ab init  io, TopHat will ignore donor/acceptor pairs farther than this many bases apart, except when such a   pair is supported by a split segment alignment of a long read (-I)",
+              "argument":"-l",
+              "label":"The maximum intron length"
+            },
+            "value":{
+              "default":"50000",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "maxalign",
+            "details": {
+              "description": "Maximum number of alignments to be allowed",
+              "argument":"-j",
+              "label":"Maximum alignments"
+            },
+            "value":{
+              "default":"20",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "minreadlength",
+            "details": {
+              "description": "Minimum length of read segments",
+              "argument":"-m",
+              "label":"Minimum length"
+            },
+            "value":{
+              "default":"20",
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "numthreads",
+            "details": {
+              "description": "",
+              "argument":"-proc",
+              "label":"number of threads"
+            },
+            "value":{
+              "default":"16",
+              "required":true,
+              "type":"number",
+              "visible":"false"
+            }
+        },
+        {
+            "id" : "discalign",
+            "details": {
+              "description": "No discordant alignments",
+              "argument":"-c",
+              "label":"Discordant alignments?"
+            },
+            "value":{
+              "default":"false",
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "mixalign",
+            "details": {
+              "description": "No mixed alignments",
+              "argument":"-d",
+              "label":"Mixed alignments"
+            },
+            "value":{
+              "default":"false",
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "usegtf",
+            "details": {
+              "description": "Cufflinks will use transcripts found in the annotation file (gt  f) as a basis for the assembly of transcripts",
+              "argument":"-n",
+              "label":"Use reference annotation GTF"
+            },
+            "value":{
+              "default":"true",
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "userescue",
+            "details": {
+              "description": "Use rescue method for multi-reads",
+              "argument":"-p",
+              "label":"Use rescue method"
+            },
+            "value":{
+              "default":"false",
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "maxit",
+            "details": {
+              "description": "Maximum iterations allowed for MLE calculation",
+              "argument":"-Q",
+              "label":"Maximum iterations"
+            },
+            "value":{
+              "required":false,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "idpre",
+            "details": {
+              "description": "Transcript prefix id",
+              "argument":"-q",
+              "label":"Prefix id"
+            },
+            "value":{
+              "default":"CUFF",
+              "required":true,
+              "type":"string",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "isofrac",
+            "details": {
+              "description": "Minimum isoform fraction",
+              "argument":"-s",
+              "label":"Isoform fraction"
+            },
+            "value":{
+              "default":0.1,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "intraintrtresh",
+            "details": {
+              "description": "Supress intra-intronic transcripts below this level",
+              "argument":"-t",
+              "label":"Intra-intronic transcript treshold"
+            },
+            "value":{
+              "default":0.15,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "maxintron",
+            "details": {
+              "description": "Maximum intron length",
+              "argument":"-u",
+              "label":"Max intron length"
+            },
+            "value":{
+              "default":300000,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "minintron",
+            "details": {
+              "description": "Minimum intron length",
+              "argument":"-z",
+              "label":"Min intron length"
+            },
+            "value":{
+              "default":50,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "junctionalpha",
+            "details": {
+              "description": "Alpha for junction binomial test filter",
+              "argument":"-v",
+              "label":"Junction filter alpha"
+            },
+            "value":{
+              "default":0.001,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "anchfrac",
+            "details": {
+              "description": "Small anchor fraction",
+              "argument":"-w",
+              "label":"Small anchor fraction"
+            },
+            "value":{
+              "default":0.09,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "mintransfrag",
+            "details": {
+              "description": "Minimum number of fragments needed for new transfrags",
+              "argument":"-x",
+              "label":"Transfrag treshold"
+            },
+            "value":{
+              "default":10,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "termexonmax",
+            "details": {
+              "description": "Number of terminal exon bp to tolerate in introns",
+              "argument":"-y",
+              "label":"Terminal exon bp limit"
+            },
+            "value":{
+              "default":8,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "trimcovavg",
+            "details": {
+              "description": "Minimum average coverage required to attempt 3' trimming",
+              "argument":"-A",
+              "label":"Trimming - minimum average coverage"
+            },
+            "value":{
+              "default":10,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "trimfrac",
+            "details": {
+              "description": "Fraction of average coverage below which to trim 3' end",
+              "argument":"-B",
+              "label":"Trimming - average coverage fraction"
+            },
+            "value":{
+              "default":0.1,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "transfraggap",
+            "details": {
+              "description": "Maximum gap size to fill between transfrags",
+              "argument":"-C",
+              "label":"Transfrag max gap size"
+            },
+            "value":{
+              "default":50,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "transfraggap",
+            "details": {
+              "description": "Cuffdiff - Fragment bias correction using reference sequence",
+              "argument":"-D",
+              "label":"Ref seq bias correction"
+            },
+            "value":{
+              "default":true,
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "userescuecd",
+            "details": {
+              "description": "Cuffdiff - Use rescue method for multi-reads",
+              "argument":"-F",
+              "label":"Use rescue method"
+            },
+            "value":{
+              "default":"false",
+              "required":false,
+              "type":"flag",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "testalign",
+            "details": {
+              "description": "Minimum number of alignments in a locus for testing",
+              "argument":"-G",
+              "label":"Min. testing alignments"
+            },
+            "value":{
+              "default":10,
+              "required":true,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "testfdr",
+            "details": {
+              "description": "False discovery rate uesd in testing",
+              "argument":"-H",
+              "label":"Testing FDR"
+            },
+            "value":{
+              "default":0.05,
+              "required":false,
+              "type":"number",
+              "visible":"true"
+            }
+        },
+        {
+            "id" : "normalhits",
+            "details": {
+              "description": "Select hits to use for normalization",
+              "argument":"",
+              "label":"Select normalization hits"
+            },
+            "value":{
+              "default":0.05,
+              "required":false,
+              "type":"enumeration",
+              "enumValues": [{
+                              "":"Count hits compatible with reference RNAs only for normaliz  ation"
+                            },
+                            {
+                              "-I":"Count all hits for normalization"
+                            }],
+              "visible":"true"
+            }
+        }
+    ]
+}

@@ -1,2 +1,4 @@
 *.swp
 amazontest/*
+tuxedo_suite/RNA_seq_iplant_practical/*
+tuxedo_suite/tuxedo_suite.docker
