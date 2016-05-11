@@ -4,6 +4,7 @@ import os
 import argparse
 import shutil
 import glob
+import sys
 parser = argparse.ArgumentParser(description="Process Tuxedo suite command input")
 parser.add_argument("-indx", action="store")
 parser.add_argument("-indpre", action="store")
