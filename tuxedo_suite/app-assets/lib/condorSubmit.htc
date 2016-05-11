@@ -1,5 +1,5 @@
 universe                = docker
-image                   = cyverseuk:tuxedo_suite
+docker_image            = cyverseuk:tuxedo_suite
 
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT
