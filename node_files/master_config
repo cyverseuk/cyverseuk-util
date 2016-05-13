@@ -89,9 +89,8 @@ PROCD_ADDRESS = $(RUN)/procd_pipe
 
 ##  What machine is your central manager?
 
-CONDOR_HOST = 10.0.72.17
+CONDOR_HOST = 10.0.72.7
 COLLECTOR_HOST = $(CONDOR_HOST):4080?sock=collector
-SCHEDD_HOST = submit
 
 ##  Dynamic Slot definitions
 #SLOT_TYPE_1 = cpus=100%,disk=100%,swap=100%
@@ -102,7 +101,7 @@ SCHEDD_HOST = submit
 ##  This macro determines what daemons the condor_master will start and keep its watchful eyes on.
 ##  The list is a comma or space separated list of subsystem names
 
-DAEMON_LIST = MASTER,NEGOTIATOR,COLLECTOR
+DAEMON_LIST = MASTER,SCHEDD,NEGOTIATOR,COLLECTOR
 
 DAEMON_LIST = $(DAEMON_LIST) SHARED_PORT
 USE_SHARED_PORT = True
