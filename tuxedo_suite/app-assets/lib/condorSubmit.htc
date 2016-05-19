@@ -4,7 +4,7 @@ docker_image            = cyverseuk/tuxedo_suite:latest
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT
 request_memory          = 100G
-transfer_output_files   = condition1_accepted_hits,condition2_accepted_hits,condition3_accepted_hits,condition4_accepted_hits,cuff_diff_out,cufflinks_condition_1_rep_1,cufflinks_condition_2_rep_1,cufflinks_condition_3_rep_1,cufflinks_condition_4_rep_1,cuffmerge_gtf,file.txt,tophat2_condition_1_rep_1,tophat2_condition_2_rep_1,tophat2_condition_3_rep_1,tophat2_condition_4_rep_1,assembled_transcripts
+transfer_output_files   = cufflinks_condition_1_rep_1,cufflinks_condition_2_rep_1,cufflinks_condition_3_rep_1,cufflinks_condition_4_rep_1,cuffmerge_gtf,index_files,logs,r_plots,tophat2_condition_1_rep_1,tophat2_condition_2_rep_1,tophat2_condition_3_rep_1,tophat2_condition_4_rep_1,
 
 output                  = out.$(Process)
 error                   = err.$(Process)
