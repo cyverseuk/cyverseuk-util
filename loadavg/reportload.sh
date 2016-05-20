@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for node in `cat /home/admin/loadavg/nodes`
+for node in `cat /home/admin/cyverseuk-util/loadavg/nodes`
 do
   slotname=slot1@$node
   loadavg=$(condor_status -l $slotname | grep TotalLoadAvg | sed 's/TotalLoadAvg = //')

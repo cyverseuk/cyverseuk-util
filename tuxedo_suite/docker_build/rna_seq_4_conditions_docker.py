@@ -104,13 +104,13 @@ con_1_folder = 1
 #loop to iterate over all input pairs for condition 1 - TopHat2
 if args.input1 and args.input2:
     for x, y in list(zip(args.input1, args.input2)):
-        output_directory1 = "-o ./tophat2_condition_1_rep_%d" % con_1_folder
+        output_directory1 = "-o ./output/tophat2_condition_1_rep_%d" % output_dir,con_1_folder
         tophat2_command.extend([output_directory1, args.indpre, x, y])
         final_command = " ".join(tophat2_command)
         print("\n",final_command)
         os.system(final_command)
-        if not os.path.exists("./condition1_accepted_hits"): os.mkdir("./condition1_accepted_hits")
-        shutil.copy("./tophat2_condition_1_rep_%d/accepted_hits.bam" % con_1_folder, "./condition1_accepted_hits/accepted_hits_condition1_rep_%d.bam" % con_1_folder)
+        if not os.path.exists("./output/condition1_accepted_hits"): os.mkdir("./output/condition1_accepted_hits", % output_dir)
+        shutil.copy("./output/tophat2_condition_1_rep_%d/accepted_hits.bam" % output_dir,con_1_folder, "./output/condition1_accepted_hits/accepted_hits_condition1_rep_%d.bam" % con_1_folder)
         del tophat2_command[-4:]
         con_1_folder += 1
 else: pass
@@ -118,13 +118,13 @@ else: pass
 con_2_folder = 1
 if args.input3 and args.input4:
     for x, y in list(zip(args.input3, args.input4)):
-        output_directory2 = "-o ./tophat2_condition_2_rep_%d" % con_2_folder
+        output_directory2 = "-o ./output/tophat2_condition_2_rep_%d" % con_2_folder
         tophat2_command.extend([output_directory2, args.indpre, x, y])
         final_command = " ".join(tophat2_command)
         print("\n",final_command)
         os.system(final_command)
-        if not os.path.exists("./condition2_accepted_hits"): os.mkdir("./condition2_accepted_hits")
-        shutil.copy("./tophat2_condition_2_rep_%d/accepted_hits.bam" % con_2_folder, "./condition2_accepted_hits/accepted_hits_condition2_rep_%d.bam" % con_2_folder)
+        if not os.path.exists("./output/condition2_accepted_hits"): os.mkdir("./output/condition2_accepted_hits")
+        shutil.copy("./output/tophat2_condition_2_rep_%d/accepted_hits.bam" % con_2_folder, "./output/condition2_accepted_hits/accepted_hits_condition2_rep_%d.bam" % con_2_folder)
         del tophat2_command[-4:]
         con_2_folder += 1
 else: pass
@@ -132,13 +132,13 @@ else: pass
 con_3_folder = 1
 if args.input5 and args.input6:
     for x, y in list(zip(args.input5, args.input6)):
-        output_directory3 = "-o ./tophat2_condition_3_rep_%d" % con_3_folder
+        output_directory3 = "-o ./output/tophat2_condition_3_rep_%d" % con_3_folder
         tophat2_command.extend([output_directory3, args.indpre, x, y])
         final_command = " ".join(tophat2_command)
         print("\n",final_command)
         os.system(final_command)
-        if not os.path.exists("./condition3_accepted_hits"): os.mkdir("./condition3_accepted_hits")
-        shutil.copy("./tophat2_condition_3_rep_%d/accepted_hits.bam" % con_3_folder, "./condition3_accepted_hits/accepted_hits_condition3_rep_%d.bam" % con_3_folder)
+        if not os.path.exists("./output/condition3_accepted_hits"): os.mkdir("./output/condition3_accepted_hits")
+        shutil.copy("./output/tophat2_condition_3_rep_%d/accepted_hits.bam" % con_3_folder, "./output/condition3_accepted_hits/accepted_hits_condition3_rep_%d.bam" % con_3_folder)
         del tophat2_command[-4:]
         con_3_folder += 1
 else: pass
@@ -146,13 +146,13 @@ else: pass
 con_4_folder = 1
 if args.input7 and args.input8:
     for x, y in list(zip(args.input7, args.input8)):
-        output_directory4 = "-o ./tophat2_condition_4_rep_%d" % con_4_folder
+        output_directory4 = "-o ./output/tophat2_condition_4_rep_%d" % con_4_folder
         tophat2_command.extend([output_directory4, args.indpre, x, y])
         final_command = " ".join(tophat2_command)
         print("\n",final_command)
         os.system(final_command)
-        if not os.path.exists("./condition4_accepted_hits"): os.mkdir("./condition4_accepted_hits")
-        shutil.copy("./tophat2_condition_4_rep_%d/accepted_hits.bam" % con_4_folder, "./condition4_accepted_hits/accepted_hits_condition4_rep_%d.bam" % con_4_folder)
+        if not os.path.exists("./output/condition4_accepted_hits"): os.mkdir("./output/condition4_accepted_hits")
+        shutil.copy("./output/tophat2_condition_4_rep_%d/accepted_hits.bam" % con_4_folder, "./output/condition4_accepted_hits/accepted_hits_condition4_rep_%d.bam" % con_4_folder)
         del tophat2_command[-4:]
         con_4_folder += 1
 else: pass
@@ -170,17 +170,17 @@ if args.Q: cufflinks_command.extend(["--max-mle-iterations", args.Q])
 
 #Condition 1 Cufflinks loop
 bam_list = sorted(glob.glob("tophat2_condition_1*/accepted_hits.bam"))
-if not os.path.exists("./assembled_transcripts"): os.mkdir("./assembled_transcripts")
+if not os.path.exists("./output/assembled_transcripts"): os.mkdir("./output/assembled_transcripts")
 print(bam_list)
 cuff_con1_folder = 1
 for bam in list(zip(bam_list)):
-    cuff_out = "-o ./cufflinks_condition_1_rep_%d" % cuff_con1_folder
+    cuff_out = "-o ./output/cufflinks_condition_1_rep_%d" % cuff_con1_folder
     cufflinks_command.append(cuff_out)
     cufflinks_command.extend(bam)
     final_cufflinks_command = " ".join(cufflinks_command)
     print(final_cufflinks_command)
     os.system(final_cufflinks_command)
-    shutil.copy("./cufflinks_condition_1_rep_%d/transcripts.gtf" % cuff_con1_folder, "./assembled_transcripts/transcripts_condition1_rep_%d.gtf" % cuff_con1_folder)
+    shutil.copy("./output/cufflinks_condition_1_rep_%d/transcripts.gtf" % cuff_con1_folder, "./output/assembled_transcripts/transcripts_condition1_rep_%d.gtf" % cuff_con1_folder)
     del cufflinks_command[-2:]
     cuff_con1_folder += 1
 #Condition 2 Cufflinks loop
@@ -188,12 +188,12 @@ bam_list2 = sorted(glob.glob("tophat2_condition_2*/accepted_hits.bam"))
 print(bam_list2)
 cuff_con2_folder = 1
 for bam in list(zip(bam_list2)):
-    cuff_out = "-o ./cufflinks_condition_2_rep_%d" % cuff_con2_folder
+    cuff_out = "-o ./output/cufflinks_condition_2_rep_%d" % cuff_con2_folder
     cufflinks_command.append(cuff_out)
     cufflinks_command.extend(bam)
     final_cufflinks_command = " ".join(cufflinks_command)
     os.system(final_cufflinks_command)
-    shutil.copy("./cufflinks_condition_2_rep_%d/transcripts.gtf" % cuff_con2_folder, "./assembled_transcripts/transcripts_condition2_rep_%d.gtf" % cuff_con2_folder)
+    shutil.copy("./output/cufflinks_condition_2_rep_%d/transcripts.gtf" % cuff_con2_folder, "./output/assembled_transcripts/transcripts_condition2_rep_%d.gtf" % cuff_con2_folder)
     del cufflinks_command[-2:]
     cuff_con2_folder += 1
 #Condition 3 Cufflinks loop
@@ -201,13 +201,13 @@ bam_list3 = sorted(glob.glob("tophat2_condition_3*/accepted_hits.bam"))
 print(bam_list3)
 cuff_con3_folder = 1
 for bam in list(zip(bam_list3)):
-    cuff_out = "-o ./cufflinks_condition_3_rep_%d" % cuff_con3_folder
+    cuff_out = "-o ./output/cufflinks_condition_3_rep_%d" % cuff_con3_folder
     cufflinks_command.append(cuff_out)
     cufflinks_command.extend(bam)
     final_cufflinks_command = " ".join(cufflinks_command)
     print(final_cufflinks_command)
     os.system(final_cufflinks_command)
-    shutil.copy("./cufflinks_condition_3_rep_%d/transcripts.gtf" % cuff_con3_folder, "./assembled_transcripts/transcripts_condition3_rep_%d.gtf" % cuff_con3_folder)
+    shutil.copy("./output/cufflinks_condition_3_rep_%d/transcripts.gtf" % cuff_con3_folder, "./output/assembled_transcripts/transcripts_condition3_rep_%d.gtf" % cuff_con3_folder)
     del cufflinks_command[-2:]
     cuff_con3_folder += 1
 #Condition 4 Cufflinks loop
@@ -215,13 +215,13 @@ bam_list4 = sorted(glob.glob("tophat2_condition_4*/accepted_hits.bam"))
 print(bam_list4)
 cuff_con4_folder = 1
 for bam in list(zip(bam_list4)):
-    cuff_out = "-o ./cufflinks_condition_4_rep_%d" % cuff_con4_folder
+    cuff_out = "-o ./output/cufflinks_condition_4_rep_%d" % cuff_con4_folder
     cufflinks_command.append(cuff_out)
     cufflinks_command.extend(bam)
     final_cufflinks_command = " ".join(cufflinks_command)
     print(final_cufflinks_command)
     os.system(final_cufflinks_command)
-    shutil.copy("./cufflinks_condition_4_rep_%d/transcripts.gtf" % cuff_con4_folder, "./assembled_transcripts/transcripts_condition4_rep_%d.gtf" % cuff_con4_folder)
+    shutil.copy("./output/cufflinks_condition_4_rep_%d/transcripts.gtf" % cuff_con4_folder, "./output/assembled_transcripts/transcripts_condition4_rep_%d.gtf" % cuff_con4_folder)
     del cufflinks_command[-2:]
     cuff_con4_folder += 1
 
@@ -230,7 +230,7 @@ for bam in list(zip(bam_list4)):
 cuffmerge = "cuffmerge"
 cuffmerge_command = [cuffmerge, "-p", args.proc, "-o cuffmerge_gtf"]
 #make list of gtfs
-the_list = glob.glob("./assembled_transcripts/*.gtf")
+the_list = glob.glob("./output/assembled_transcripts/*.gtf")
 print(the_list)
 #create txt input file containing gtfs line by line
 f =open("file.txt", "w")
@@ -255,13 +255,13 @@ if args.input5 and args.input6: labels.append(args.lab3)
 if args.input7 and args.input8: labels.append(args.lab4)
 labels2 = ",".join(labels)
 print(labels2)
-cuffdiff_command = [cuffdiff, "-p", args.proc, "-L", labels2, "--library-type", args.e, "-c", args.G, "--FDR", args.H, "-o cuff_diff_out", "./cuffmerge_gtf/merged.gtf"]
+cuffdiff_command = [cuffdiff, "-p", args.proc, "-L", labels2, "--library-type", args.e, "-c", args.G, "--FDR", args.H, "-o cuff_diff_out", "./output/cuffmerge_gtf/merged.gtf"]
 if args.D: cuffdiff_command.insert(-2, "-b %s" %args.indx)
 if args.E: cuffdiff_command.insert(-2, "-M %s" %args.E)
 if args.F: cuffdiff_command.insert(-2, "-u")
 if args.I: cuffdiff_command.insert(-2, "--total-hits-norm")
 #make list of folders containing assembled transcripts
-dir_list = glob.glob("./condition?_accepted_hits")
+dir_list = glob.glob("./output/condition?_accepted_hits")
 print(dir_list)
 dir_list2 = sorted(dir_list)
 for bam in dir_list2:
@@ -277,12 +277,12 @@ os.system(cuffdiff_final)
 
 #-------------------------------------------- CummeRbund ------------------------------------------------------
 
-if not os.path.exists("./r_plots"): os.mkdir("./r_plots")
+if not os.path.exists("./output/r_plots"): os.mkdir("./output/r_plots")
 plot_script = "Rscript /cummerbund_plot_scripts.r"
 
 os.system(plot_script)
 
 #-------------------------------------------- Cleaning ------------------------------------------------------
 
-os.system("rm -r ./assembled_transcripts ./condition* ./file.txt")
-os.system("mkdir -p ./index_files/; mv %s* ./index_files" %args.indpre)
+os.system("rm -r ./output/assembled_transcripts ./output/condition* ./output/file.txt")
+os.system("mkdir -p ./output/index_files/; mv %s* ./output/index_files" %args.indpre)
