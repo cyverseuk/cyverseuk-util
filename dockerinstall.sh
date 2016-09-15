@@ -7,4 +7,8 @@ echo deb https://apt.dockerproject.org/repo ubuntu-wily main | sudo tee /etc/apt
 sudo apt update
 sudo apt -y install docker-engine
 sudo usermod $USER -aG docker
-exec su -l $USER
+
+echo ""
+echo "############################################"
+echo "# Note: relogin to run docker without sudo #"
+echo "############################################"
