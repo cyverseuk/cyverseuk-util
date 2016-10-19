@@ -17,7 +17,33 @@ def deltatime( pit ):
 
     return str(days_up)+"+"+'{:02d}'.format(hours_up)+":"+'{:02d}'.format(mins_up)+":"+'{:02d}'.format(time_up)
 
-coll = htcondor.Collector("10.0.72.17:4080?sock=collector")
+def usage():
+    print("\nSYNOPSIS:\n")
+    print("betterstatus.py [-c \"collector_address\"] [-s \"schedd_address\"]\n")
+    print("-c, --collector <String> : address of the collector daemon (defaults to localhost)")
+    print("-s, --schedd <String>    : address of the schedd daemon (defaults to localhost)")
+    print("-h, --help               : this message")
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "c:s:h", ["collector", "schedd", "help"])
+except getopt.GetoptError as err:
+    print(str(err))
+    usage()
+    sys.exit(2)
+collectoradd = "localhost"
+scheddadd = "localhost"
+for o, a in opts:
+    if o in ("-c", "--collector"):
+        collectoradd = a
+    elif o in ("-s", "--schedd"):
+        scheddadd = a
+    elif o in ("-h", "--help"):
+        usage()
+        sys.exit()
+    else:
+        assert False, 'unrecognized option: '+o
+
+coll = htcondor.Collector(collectoradd)
 slots = coll.query();
 
 print("########")
@@ -96,7 +122,7 @@ for i in range (0, len(out)):
         print(out[i][j],"\t",end="")
     print('')
         
-schedd_ad = coll.locate(htcondor.DaemonTypes.Schedd, "localhost")
+schedd_ad = coll.locate(htcondor.DaemonTypes.Schedd, scheddadd)
 schedd = htcondor.Schedd(schedd_ad)
 jobs = schedd.query();
 
