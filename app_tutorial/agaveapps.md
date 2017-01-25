@@ -1,7 +1,7 @@
 # Adding HPC workflows to Agave (Tutorial)
 
 This tutorial is based on Sam Mason's tutorial, and updated and adjusted 
-slightly for TGAC hardware.
+slightly for EI hardware.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -9,7 +9,7 @@ slightly for TGAC hardware.
 
 - [Overview](#overview)
 - [Part 1 - Setting up Agave API Access](#part-1---setting-up-agave-api-access)
-- [Part 2 - System registration (skip if using TGAC hardware)](#part-2---system-registration-skip-if-using-tgac-hardware)
+- [Part 2 - System registration (skip if using EI hardware)](#part-2---system-registration-skip-if-using-EI-hardware)
   - [Execution System JSON - System Basics](#execution-system-json---system-basics)
   - [Execution System JSON - Storage](#execution-system-json---storage)
   - [Execution System JSON - Queues](#execution-system-json---queues)
@@ -27,7 +27,7 @@ slightly for TGAC hardware.
 
 ## Overview
 In this tutorial, you'll set up a simple app that runs through the Agave API 
-on the TGAC HTCondor cluster or your own hardware. The only preliminary is 
+on the HTCondor cluster or your own hardware. The only preliminary is 
 a CyVerse account, for which you can sign up 
 [here](http://user.iplantcollaborative.org/) (don't worry, it's free). You'll
 also need to have git installed on the machine you will be working on. Let's 
@@ -84,9 +84,9 @@ refresh command:
 
 Now that we have our credentials set up, we can start actually registering and 
 using apps. The next section deals with registering your own system; it can be
-skipped if you are using TGAC hardware. All examples here are given using TGAC
+skipped if you are using EI hardware. All examples here are given using EI
 systems.
-## Part 2 - System registration (skip if using TGAC hardware)
+## Part 2 - System registration (skip if using EI hardware)
 Agave is a RESTful API, meaning that we can interact with it using POST and GET
 http requests. The foundation-cli tools are essentially wrappers around these 
 types of requests to make these requests shorter.
@@ -102,7 +102,7 @@ The first part consists of system basics: id, type etc. See an example below:
 
 ```json
 "id"            : "myTutorialMachine",
-"name"          : "A machine for the TGAC Agave tutorial",
+"name"          : "A machine for the EI Agave tutorial",
 "type"          : "EXECUTION",
 "executionType" : "CLI",
 "scheduler"     : "FORK",
@@ -210,7 +210,7 @@ The first thing we'll need to describe are some basic parameters of our app:
 
 ```json
 "name"          : "blastapp-tutorial",
-"label"         : "TGAC tutorial BLAST app",
+"label"         : "EI tutorial BLAST app",
 "version"       : "0.0.1",
 "executionType" : "CLI",
 ```
@@ -281,7 +281,7 @@ a new folder to hold our apps first. Go to "File" and select "New Folder...":
 ![The new folder menu](newfolder.png)
 
 Name the new folder
-"TGAC_tutorial" and click "OK" to confirm. Navigate to our newly created folder by clicking on it.
+"EI_tutorial" and click "OK" to confirm. Navigate to our newly created folder by clicking on it.
 This is where our app's assets will live, which we'll create in the next sections.
 
 ### Creating the App assets
