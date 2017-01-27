@@ -29,20 +29,29 @@ slightly for EI hardware.
 In this tutorial, you'll set up a simple app that runs through the Agave API 
 on the HTCondor cluster or your own hardware. The only preliminary is 
 a CyVerse account, for which you can sign up 
-[here](http://user.iplantcollaborative.org/) (don't worry, it's free). You'll
+[here](https://user.cyverse.org/) (don't worry, it's free). You'll
 also need to have git installed on the machine you will be working on. Let's 
 get going!
 ## Part 1 - Setting up Agave API Access
 First, you'll need to configure your environment to have API access. The easiest
-way is to download the Agave-CLI package: 
+way is to download the CyVerse-CLI package: 
 
-`git clone https://bitbucket.org/taccaci/foundation-cli`
+`git clone https://github.com/iPlantCollaborativeOpenSource/cyverse-sdk.git cyverse-sdk`
+
 
 This will create a 
-`foundation-cli` directory in your current directory. To shorten our commands,
+`cyverse-sdk` directory in your current directory. 
+
+Change into 
+`cyverse-sdk`
+
+Uncompress cyverse-cli.tgz
+`tar xf cyverse-cli.tgz`
+
+To shorten our commands,
 let's add it to our PATH: 
 
-``export PATH=$PATH:`pwd`/foundation-cli/bin`` 
+``export PATH=$PATH:`pwd`/cyverse-cli/bin`` 
 
 Now that we can access the API commands, let's set up the keys to allow API 
 access. You'll need to specify a tenant, wich is probably going to be 
