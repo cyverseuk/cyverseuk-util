@@ -36,17 +36,17 @@ get going!
 First, you'll need to configure your environment to have API access. The easiest
 way is to download the CyVerse-CLI package: 
 
-`git clone https://github.com/iPlantCollaborativeOpenSource/cyverse-sdk.git cyverse-sdk`
+``git clone https://github.com/iPlantCollaborativeOpenSource/cyverse-sdk.git cyverse-sdk``
 
 
 This will create a 
 `cyverse-sdk` directory in your current directory. 
 
 Change into 
-`cyverse-sdk`
+``cyverse-sdk``
 
 Uncompress cyverse-cli.tgz
-`tar xf cyverse-cli.tgz`
+``tar xf cyverse-cli.tgz``
 
 To shorten our commands,
 let's add it to our PATH: 
