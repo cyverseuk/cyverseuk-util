@@ -43,9 +43,11 @@ This will create a
 `cyverse-sdk` directory in your current directory. 
 
 Change into 
+
 ``cyverse-sdk``
 
 Uncompress cyverse-cli.tgz
+
 ``tar xf cyverse-cli.tgz``
 
 To shorten our commands,
