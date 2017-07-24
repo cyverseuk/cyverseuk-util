@@ -16,6 +16,7 @@ Step by step guide for deploying a node:
 ### Centos
 
 Step by step guide to deploy a submit node:
+* disable selinux
 * Install the htcondor repositories: 
   ```
   cd /etc/yum.repos.d  
