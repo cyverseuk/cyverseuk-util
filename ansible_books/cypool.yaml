@@ -1,0 +1,45 @@
+---
+- hosts: condor-workers
+  tasks:
+  - name: install docker on workers
+    #####
+
+- hosts: condor:&ubuntu-xenial
+  tasks:
+  - name: install condor for all ubuntu nodes
+    #####
+
+- hosts: condor:&centos7
+  tasks:
+  - name: ensure wget is installed on centos
+    yum: name=wget state=present
+  - name: disable selinux
+    ######
+  - name: install htcondor repositories
+    ######
+  - name: import condor key
+    #####
+  - name: install condor for all centos nodes
+    yum: name=condor.x86_64 state=present
+
+- hosts: condor-manager
+  tasks:
+  - name: set hostnames on manager
+    #####
+  - name: change condor config for manager
+    #####
+
+- hosts: condor-workers
+  tasks:
+  - name: change condor config for workers
+    #####
+
+- hosts: condor-submit:&centos7
+  tasks:
+  - name: change condor config for submit
+    #####
+
+- hosts: condor
+  tasks:
+  - name: start condor daemons
+    service: name=condor state=restarted
