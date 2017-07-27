@@ -1,6 +1,6 @@
 # cyverseuk-util
 
-This repo contains files scripts and documentation on the CyVerse UK hardware at TGAC
+This repo contains files scripts and documentation on the CyVerse UK hardware at Earlham Institute.
 
 ## hpc_scripts
 * [blast-condor.pl](hpc_scripts/blast-condor.md): split up BLAST queries for running on condor
